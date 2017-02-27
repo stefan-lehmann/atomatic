@@ -1,0 +1,133 @@
+$hexWhite = #ffffff
+$hexBlack = #000000
+$hexSlateGray = #6B7B8F
+$hexMineShaft = #333333
+
+$hexMaroonFlush = #C2185B
+$hexDustGray = #979797
+$hexSilver = #C1C1C1
+$hexAlto = #DBDBDB
+$hexSeashell = #F1F1F1
+$hexPorcelain = #EBEFF1
+
+$hexEbb = #e8e2e2
+$hexEbbBright = #f0ecec
+$hexEbbBrightes = #f7f5f5
+
+$hexCrusta = #f77b2a
+$hexCrustaBright = #faa974
+$hexCrustaBrightes = #fcd1b5
+
+//Special Colors
+$colorPrimary = $hexMaroonFlush
+$colorBorderDefault = $hexCrusta
+$colorBackgroundDefault = $hexWhite
+$colorBackgroundInvert = $hexMaroonFlush
+
+//TextColors
+$colorText = $hexMineShaft
+$colorTextSecondary = $hexDustGray
+$colorTextInvert = $hexWhite
+
+$colorButtons = $hexCrusta
+$colorInfo = mix($hexSlateGray, $colorButtons, 20%)
+$colorWarning = $colorText
+$colorAlert = mix(yellow, $colorButtons, 20%)
+$colorSuccess = mix(orange, $colorButtons, 20%)
+
+//Link Colors
+$colorLink = $hexMaroonFlush
+$colorLinkInvert = $colorLink
+$colorLinkBackground = transparent
+
+//Layout
+$paddingSmall = 5px
+$paddingNormal = 10px
+$paddingLarge = 20px
+$paddingXLarge = 40px
+$paddingLayout = $paddingNormal
+
+//Border
+$borderRadiusDefault = 4px
+$borderWidthDefault = 1px
+$borderTypeDefault = solid
+$borderColorDefault = $hexAlto
+$borderDefault = $borderWidthDefault $borderTypeDefault $borderColorDefault
+
+//Layout
+$layoutMaxWidth = 1100px
+$widthOffCanvasLeft = 270px
+$widthOffCanvasRight = 280px
+$layoutBorderRadiusLarge = 100px
+$layoutBorderRadiusMedium = 50px
+$layoutBorderRadiusSmall = 30px
+
+//Opacity
+$opacityOverlayBackground = 0.5
+$colorBackDrop = rgba($hexBlack, $opacityOverlayBackground)
+$colorImageDrop = rgba($hexBlack, 0.25)
+
+//shadow
+$shadowDropDefault = 0 2px 5px 0 rgba($hexBlack, 0.16), 0 2px 10px 0 rgba($hexBlack, 0.12)
+$shadowInsetDefault = inset 0 0 $paddingNormal 0 $colorBackDrop
+$shadowTextDefault = 0 0 .125em rgba($hexBlack, 0.5)
+$shadowBoxDefault = 0 1px 1px rgba($hexBlack, 0.1)
+
+//Timings
+$timingFast = 125ms
+$timingNormal = 250ms
+$timingLong = 500ms
+$timingExtraLong = 1000ms
+$timingForever = 5000ms
+
+//Z-index
+$zindexFixed = 1000
+$zindexNavigation = 10 + $zindexFixed
+$zindexPopOver = 20 + $zindexFixed
+$zindexStickySidebar = 30 + $zindexFixed
+$zindexTooltip = 40 + $zindexFixed
+$zindexStickyHeader = 50 + $zindexFixed
+$zindexModal = 100 + $zindexFixed
+$zindexModalContent = 101 + $zindexFixed
+$zindexModalHead = 102 + $zindexFixed
+$zindexSearchActive = 103 + $zindexFixed
+
+//Screen widths
+$widthPhoneStart = 320px
+$widthPhoneMid = 400px
+$widthTabletStart = 600px
+$widthTabletMid = 768px
+$widthLaptopStart = 900px
+$widthLaptopMid = 1024px
+$widthDesktopStart = 1200px
+$widthDesktopMid = 1600px
+$widthTvStart = 1920px
+
+//Min Media variables
+$mediaMinPhoneStart = mediaMin($widthPhoneStart)
+$mediaMinPhoneMid = mediaMin($widthPhoneMid)
+$mediaMinTabletStart = mediaMin($widthTabletStart)
+$mediaMinTabletMid = mediaMin($widthTabletMid)
+$mediaMinLaptopStart = mediaMin($widthLaptopStart)
+$mediaMinLaptopMid = mediaMin($widthLaptopMid)
+$mediaMinDesktopStart = mediaMin($widthDesktopStart)
+$mediaMinDesktopMid = mediaMin($widthDesktopMid)
+$mediaMinTvStart = mediaMin($widthTvStart)
+$mediaMinLayoutMaxWidth  = mediaMin($layoutMaxWidth)
+
+//Max Media variables
+$mediaMaxPhoneMid = mediaMax(($widthPhoneMid - 1))
+$mediaMaxPhoneEnd = mediaMax(($widthTabletStart - 1))
+$mediaMaxTabletMid = mediaMax(($widthTabletMid - 1))
+$mediaMaxTabletEnd = mediaMax(($widthLaptopStart - 1))
+$mediaMaxLaptopMid = mediaMax(($widthLaptopMid - 1))
+$mediaMaxLaptopEnd = mediaMax(($widthDesktopStart - 1))
+$mediaMaxDesktopMid = mediaMax(($widthLaptopMid - 1))
+$mediaMaxDesktoEnd = mediaMax(($widthTvStart - 1))
+
+//Max Media variables
+$mediaPhone = $mediaMaxPhoneEnd
+$mediaTablet = mediaMinMax($widthTabletStart, ($widthLaptopStart - 1))
+$mediaLaptop = mediaMinMax($widthLaptopStart, ($widthDesktopStart - 1))
+$mediaDesktop = mediaMinMax($widthDesktopStart, ($widthTvStart - 1))
+$mediaTv = $mediaMinTvStart

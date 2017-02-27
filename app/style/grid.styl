@@ -1,0 +1,118 @@
+.grid
+  display flex
+  flex-flow row nowrap
+  align-items stretch
+
+  &&--equal-height
+    > .grid__item
+      display flex
+
+  &&--space-between
+    justify-content space-between
+
+  &&--stretch
+    align-items stretch
+
+  &&--center
+    align-items center
+
+  &&--start
+    align-items flex-start
+
+  &&--end
+    align-items flex-end
+
+  &&--baseline
+    align-items baseline
+
+  &&--wrap
+    flex-wrap wrap
+
+  &&--padding
+    margin-left $paddingNormal * -1
+    margin-right @margin-left
+
+    .grid__item
+      padding-left @margin-left * -1
+      padding-right @padding-left
+
+
+  &__item
+    flex-shrink 0
+    flex-grow 0
+    flex-basis (100%)
+
+    @media $mediaMinPhoneMid
+      flex-basis (100%/2)
+
+    @media $mediaMinTabletStart
+      flex-basis (100%/3)
+
+    @media $mediaMinTabletMid
+      flex-basis (100%/4)
+
+    @media $mediaMinLaptopStart
+      flex-basis (100%/5)
+
+    @media $mediaDesktop
+      flex-basis (100%/6)
+
+      for num in (4..5)
+        &:first-child:nth-last-child({num})
+          &
+          & ~ .grid__item
+            flex-basis (100%/num)
+
+    @media $mediaTv
+      flex-basis (100%/8)
+
+      for num in (6..7)
+        &:first-child:nth-last-child({num})
+          &
+          & ~ .grid__item
+            flex-basis (100%/num)
+
+    &&--1-2
+      flex-basis (100%/2)
+
+    &&--1-3
+      flex-basis (100%/3)
+
+    &&--1-4
+      flex-basis (100%/4)
+
+    &&--1-5
+      flex-basis (100%/5)
+
+    &&--1-6
+      flex-basis (100%/6)
+
+    &&--1-8
+      flex-basis (100%/8)
+
+    &&--2-3
+      flex-basis (100%/3*2)
+
+    &&--3-4
+      flex-basis (100%/4*3)
+
+    &&--2-5
+      flex-basis (100%/5*2)
+
+    &&--3-5
+      flex-basis (100%/5*3)
+
+    &&--4-5
+      flex-basis (100%/5*4)
+
+    &&--1-6
+      flex-basis (100%/6)
+
+    &&--5-6
+      flex-basis (100%/6*5)
+
+    &&--grow
+      flex-grow 2
+
+    &&--shrink
+      flex-shrink 2

@@ -1,0 +1,83 @@
+.off-canvas
+
+  &__toggle
+    absolute($paddingSmall, $paddingSmall)
+    display block
+    z-index 3
+    padding $paddingSmall
+    padding-top ($paddingSmall - 2px)
+    width 20px
+    height 20px
+    font-size 26px
+    font-weight 300
+    line-height 20px
+    box-sizing content-box
+    vertical-align middle
+    transition all 0s linear 0s
+    color $colorTextInvert
+
+    &:after
+      content '×'
+
+    &&--open
+      right -20px
+      height 23px
+      font-size 20px
+      font-weight normal
+      background-color $colorBackgroundInvert
+      box-shadow $shadowDropDefault
+      border-top-right-radius $borderRadiusDefault
+      border-bottom-right-radius $borderRadiusDefault
+      z-index -1
+      transition all 0s linear $timingNormal
+
+      &:after
+        content '»'
+
+      &:hover
+      &:focus
+        right (-20px - (2 * $paddingSmall))
+
+  &__head
+    flex-basis 80px
+    background-color $colorBackgroundInvert
+    color $colorTextInvert
+    display flex
+    flex-direction row
+    align-items center
+    justify-content center
+    text-align center
+
+    h2
+      padding $paddingLayout
+
+  &__body
+    flex 2 2
+    overflow-y auto
+
+  &__footer
+    flex 0 2
+    padding $paddingNormal
+    font-size .7em
+
+.nav
+  padding $paddingLarge
+  font-size .8em
+
+  &__list
+    margin-bottom $paddingNormal
+
+    &&--secondary
+      margin-left $paddingLarge
+
+  &__link
+    display block
+    padding $paddingSmall
+    color inherit
+    cursor pointer
+
+    &&--primary
+      font-weight bold
+
+    .nav__list-item--active > &
+      color $colorPrimary

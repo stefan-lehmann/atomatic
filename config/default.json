@@ -1,0 +1,74 @@
+{
+  "baseDir": "demo/source",
+  "dest": "public",
+  "templateExt": "pug",
+  "htmlExt": "html",
+  "dataExt": "json5",
+  "defaultDataFileName": "data",
+  "sections": [
+    {
+      "title": "Style",
+      "source": "style",
+      "generator": "style",
+      "generatedViewerCssFile": "generated.css",
+      "cssPreprocessorVars": {
+        "filename": "demo/css/variables.json",
+        "delimiter": "-"
+      },
+      "cssSource": "public/css/*.css"
+    },
+    {
+      "title": "Icons",
+      "source": "icons",
+      "generator": "icons",
+      "svgSource": "public/svgs/*.svg"
+    },
+    {
+      "title": "Patterns",
+      "source": "patterns",
+      "generator": "patterns",
+      "cssSource": "public/css/*.css",
+      "bemPattern": "[block]__[element]--[modifier]"
+    },
+    {
+      "title": "Atoms",
+      "source": "components/atoms",
+      "generator": "components"
+    },
+    {
+      "title": "Molecules",
+      "source": "components/molecules",
+      "generator": "components"
+    },
+//    {
+//      "title": "Templates",
+//      "path": "templates",
+//      "generator": "templates"
+//    },
+//    {
+//      "title": "aaaaa",
+//      "path": "pages",
+//      "generator": "pages"
+//    }
+  ],
+  "templateEngine": {
+    "name": "http",
+    "options": {
+      "url": "https://localhost:9999"
+    }
+  },
+  "app": {
+    "viewerRootPath": "example",
+    "globals": {
+      "jsFiles": ['/js/main.bundle.js'],
+      "cssFiles": [ '/css/fonts.css', '/css/master.css' ],
+    }
+  },
+  "server": {
+    "name": "Design System Creator",
+    "port": 9000,
+    "server": {
+    },
+    "https": true
+  }
+}

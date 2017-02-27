@@ -1,0 +1,14 @@
+.dsc-grid.dsc-grid--equal-height.dsc-grid--wrap
+  if properties && properties.colors
+    for color in properties.colors
+      .dsc-grid__item
+        .dsc-card
+          .dsc-card__head
+            .dsc-color-block(class= color.viewerClassName)
+              .dsc-color-block__title.dsc-h3(style="color: " + color.textColor)= color.value
+          .dsc-card__body
+            .dsc-h4 #{color.total} &times; #{color.name} #{color.alpha}
+              if color.suffix
+                sup= ' ' + color.suffix
+          if color.vars
+            .dsc-card__footer= color.vars.join(' · ')

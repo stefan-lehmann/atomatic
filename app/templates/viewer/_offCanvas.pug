@@ -1,0 +1,33 @@
+.dsc-off-canvas__head
+  h2= description
+
+.dsc-off-canvas__body
+  .dsc-nav
+
+    ul.dsc-nav__list.dsc-nav__list--primary(v-cloak)
+
+      li.dsc-nav__list-item(
+      v-for="section, index in sections",
+      v-bind:class="{'dsc-nav__list-item--active': isActiveNav(section.url) }")
+
+        div(v-if="section.urls.length < 2")
+          a.dsc-nav__link.dsc-nav__link--primary(
+            v-bind:href="'#'+(!!section.urls[0] ? section.urls[0].url : section.url)")
+            |  {{ section.title }}
+
+        div(v-if="section.urls.length > 1")
+          span.dsc-nav__link.dsc-nav__link--primary(
+            v-on:click="section.active = !section.active")
+            | {{ section.title }}
+
+          ul.dsc-nav__list.dsc-nav__list--secondary(v-if="section.active")
+
+            li.dsc-nav__list-item(
+            v-for="url in section.urls",
+            v-bind:class="{'dsc-nav__list-item--active': isActiveNav(url.url) }")
+
+              a.dsc-nav__link.dsc-nav__link--secondary(v-bind:href="'#'+url.url")
+                | {{url.title}} {{url.pos}}
+
+.dsc-off-canvas__footer
+  | Version #{version}

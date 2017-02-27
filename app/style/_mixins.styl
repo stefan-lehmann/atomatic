@@ -1,0 +1,55 @@
+absolute(_top = null, _right = null, _bottom = null, _left = null, _content = null )
+  position absolute
+  top     _top      if _top is not null
+  right   _right    if _right is not null
+  bottom  _bottom   if _bottom is not null
+  left    _left     if _left is not null
+  content _content  if _content is not null
+
+truncate()
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+
+hyphenation()
+  word-break break-all
+  hyphens auto
+
+tintSvg(_color)
+  fill _color
+  *[fill^="#"]
+    fill _color
+  *[stroke^="#"]
+    stroke _color
+
+placeholder($color = inherit)
+  color $color
+  vertical-align baseline!important
+  display inline-block!important
+  transition color $timingNormal, opacity $timingNormal
+  font-weight 300
+  opacity .75!important
+
+input()
+  font-family inherit
+  padding 0
+  font-size 15px
+  font-weight normal
+  border none
+  border-bottom 2px solid $hexCuriousBlue
+  border-radius 0
+  background transparent
+  box-shadow none !important
+
+  &:focus
+  &:hover
+    outline none!important
+
+mediaMin(_min)
+  '(min-width ' + _min + ')'
+
+mediaMax(_max)
+  '(max-width ' + _max + ')'
+
+mediaMinMax(_min, _max)
+  '(min-width ' + _min + ') and (max-width ' + _max + ')'

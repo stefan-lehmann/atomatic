@@ -1,0 +1,18 @@
+each pattern, modifierClass in patterns
+  .dsc-section
+    if pattern[0]
+      .dsc-section__head= modifierClass + (pattern[0].commentData.title || '')
+    .dsc-section__body
+      if pattern[0]
+        div= pattern[0].commentData.description
+      .dsc-grid.dsc-grid--equal-height.dsc-grid--wrap
+        each vers, index in pattern
+          .dsc-grid__item
+            .dsc-card
+              .dsc-card__head
+                .dsc-alignment.dsc-alignment--centered!= vers.html
+              .dsc-card__body
+                if index > 0
+                  | #{vers.commentData.title}
+              if vers.modifierClass
+                .dsc-card__footer= vers.modifierClass

@@ -1,0 +1,28 @@
+doctype
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+    title= projectTitle
+    meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
+
+    style(type="text/css").
+      body, html {height:100vh; overflow:hidden}
+
+    link(href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en", rel="stylesheet")
+    link(href="./css/app.css", rel="stylesheet")
+  body
+    .dsc-layout#viewer()
+      .dsc-layout__off-canvas(v-bind:class="{'dsc-layout__off-canvas--hidden': isFullscreenCanvas() }")
+        button.dsc-off-canvas__toggle(
+        v-on:click="toggleFullscreenCanvas",
+        v-bind:class="{'dsc-off-canvas__toggle--open': isFullscreenCanvas() }"
+        v-cloak)
+        include ./_offCanvas
+
+      .dsc-layout__canvas
+        iframe.dsc-layout__iframe(name="viewer", v-if="hash", v-bind:src="hash")
+
+    script(type="text/javascript", src="./scripts/app.js")

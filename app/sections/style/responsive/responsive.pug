@@ -1,0 +1,11 @@
+.dsc-grid.dsc-grid--equal-height.dsc-grid--wrap
+  if properties && properties.mediaQueries
+    for mediaQuery in properties.mediaQueries
+      .dsc-grid__item.dsc-grid__item--1-2.dsc-grid__item--grow
+        .dsc-card
+          .dsc-card__head
+            .dsc-media-query-block(class=mediaQuery.viewerClassName, data-active="active", data-inactive="inactive")
+          .dsc-card__body
+            .dsc-h4 #{mediaQuery.total}  &times; #{mediaQuery.value}
+            if mediaQuery.vars
+              .dsc-small= mediaQuery.vars.join(' · ')

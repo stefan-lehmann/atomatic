@@ -1,0 +1,28 @@
+.main-container
+  color $colorText
+  font-family Roboto
+
+  &__head
+    truncate()
+    height 80px
+    line-height @height
+    padding 0 $paddingLarge
+    background-color $colorBackgroundDefault
+    color $colorText
+    font-size 1.5rem
+    text-transform uppercase
+    font-weight 200
+    transition padding $timingFast
+
+    @media $mediaMinTabletStart
+      font-size 2rem
+      padding-left $paddingXLarge
+      padding-right @padding-left
+
+  &__body
+    color inherit
+    padding $paddingNormal ($paddingLarge - $paddingNormal)
+    transition padding $timingFast
+
+    @media $mediaMinTabletStart
+      padding $paddingXLarge ($paddingXLarge - $paddingNormal)
