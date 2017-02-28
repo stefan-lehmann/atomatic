@@ -3,18 +3,18 @@
   "description": "An easy to use build and development tool for Atomic Design Systems, that works with Webpack and Gulp.",
   "version": "0.1.0",
   "license": "MIT",
-  "url": "https://github.com/stefan-lehmann/automatic",
+  "url": "https://github.com/stefan-lehmann/atomatic",
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stefan-lehmann/automatic"
+    "url": "https://github.com/stefan-lehmann/atomatic"
   },
   "author": {
     "email": "atomatic@lehmann.st",
     "name": "Stefan Lehmann"
   },
   "bugs": {
-    "url": "https://github.com/stefan-lehmann/automatic/issues"
+    "url": "https://github.com/stefan-lehmann/atomatic/issues"
   },
   "keywords": [
     "Atomic Design",
@@ -53,6 +53,7 @@
     "gulp-rename": "~1.2.2",
     "gulp-stylus": "~2.3.0",
     "gulp-util": "~3.0.7",
+    "json-schema-faker": "^0.4.0",
     "json5": "^0.5.1",
     "mathjs": "^3.8.1",
     "mime": "^1.3.4",

@@ -1,7 +1,7 @@
 each pattern, modifierClass in patterns
   .dsc-section
-    if pattern[0]
-      .dsc-section__head= modifierClass + (pattern[0].commentData.title || '')
+    if modifierClass
+      .dsc-section__head=  pattern[0].commentData.title || modifierClass
     .dsc-section__body
       if pattern[0]
         div= pattern[0].commentData.description
