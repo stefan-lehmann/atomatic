@@ -1,29 +1,32 @@
-.cards
-  display flex
-  flex-flow row wrap
-  align-content flex-start
-
 .card
-  width 100%
   overflow hidden
-  margin $paddingNormal
   box-shadow $shadowBoxDefault
   border-radius $borderRadiusDefault
   background-color $colorBackgroundDefault
   display flex
   flex-flow column
+  width 100%
+  & &
+    border-radius none
+    box-shadow none
+  & + &
+    margin-top ($paddingSmall * 2)
+
+  &__head
+    background $colorBackgroundInvert
+    color $colorTextInvert
+    font-size 1.3em
+    font-weight 300
 
   &__head
   &__body
   &__footer
-    padding-left $paddingNormal
-    padding-right @padding-left
-    padding-bottom @padding-left
-    &:first-child
-      padding-top @padding-left
+    padding $paddingNormal $paddingLarge
 
   &__body
     flex-grow 2
+    display flex
+    flex-direction column
 
   &__footer
     font-size .8em

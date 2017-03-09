@@ -5,7 +5,7 @@ html.dsc-html-patterns
     meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
     meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
-    title= title
+    title= pageTitle
 
     if app && app.cssFiles
       for href in app.cssFiles
@@ -22,9 +22,15 @@ html.dsc-html-patterns
         script(src=src, type="text/javascript")
 
   body.dsc-main-container.dsc-main-container--patterns
-    .dsc-main-container__head= title
-
+    .dsc-main-container__head= pageTitle
     .dsc-main-container__body
-      if body
-        - var patterns = body
-        include ../../sections/patterns/patterns
+      if description
+        .dsc-text-block!= description
+
+      if typeof body == 'string'
+        include ../../sections/patterns/single-pattern
+      else
+        if typeof body[0].body == 'string'
+          include ../../sections/patterns/multiple-patterns
+        else
+          include ../../sections/patterns/multiple-patterns-mutations

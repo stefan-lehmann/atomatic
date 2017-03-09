@@ -4,6 +4,7 @@
   "templateExt": "pug",
   "htmlExt": "html",
   "dataExt": "json5",
+  "markdownExt": "md",
   "defaultDataFileName": "data",
   "sections": [
     {

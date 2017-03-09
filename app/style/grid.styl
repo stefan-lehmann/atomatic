@@ -29,13 +29,16 @@
     flex-wrap wrap
 
   &&--padding
-    margin-left $paddingNormal * -1
+    margin-left $paddingSmall * -1
     margin-right @margin-left
 
     .grid__item
-      padding-left @margin-left * -1
-      padding-right @padding-left
+      padding @margin-left * -1
 
+  &&--cards
+    @extend .grid.grid--equal-height
+    @extend .grid.grid--wrap
+    @extend .grid.grid--padding
 
   &__item
     flex-shrink 0

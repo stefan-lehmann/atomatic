@@ -1,18 +1,27 @@
 .section
   & + &
-    margin-top $paddingLarge
+    margin-top $paddingXLarge
 
-  &__head
-    padding $paddingLayout $paddingLayout
-    border-bottom $borderDefault
-    font-size 1.175rem
-    font-weight 500
+  //&__head
+  //  padding $paddingLayout 0 $paddingLarge
+  //  margin-bottom $paddingXLarge
+  //  border-bottom $borderDefault
+  //  font-size 1.175rem
+  //  font-weight 400
 
   &__body
-    padding $paddingLayout
+    &&--cards
+      margin 0 ($paddingNormal * -1)
 
     &&--iframe
       padding 0
       overflow hidden
       width 100%
       height 300px
+
+.text-block
+  padding $paddingXLarge 0
+  &:first-child
+    padding-top 0
+  &:last-child
+    padding-bottom 0

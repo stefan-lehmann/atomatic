@@ -1,0 +1,26 @@
+each section in body
+  each pattern, modifierClass in section.body
+    .dsc-card
+      if pattern[0].commentData.title
+        .dsc-card__head= pattern[0].commentData.title
+      else if modifierClass
+        .dsc-card__head= section.title + ' + .' + modifierClass
+      else if pageTitle != section.title
+        .dsc-card__head= section.title
+
+      .dsc-card__body
+        if pattern[0] && pattern[0].commentData && pattern[0].commentData.description
+          .dsc-text-block!= pattern[0].commentData.description
+
+        .dsc-grid.dsc-grid--equal-height.dsc-grid--stretch.dsc-grid--padding.dsc-grid--wrap
+          each vers, index in pattern
+            .dsc-grid__item
+              .dsc-card
+                .dsc-card__body
+                  .dsc-alignment.dsc-alignment--centered.dsc-alignment--middle!= vers.html
+                .dsc-card__footer
+                  if index > 0 && vers.commentData.title
+                    .dsc-alignment.dsc-alignment--centered= vers.commentData.title
+                  if vers.modifierClass
+                    .dsc-alignment.dsc-alignment--centered= vers.modifierClass
+

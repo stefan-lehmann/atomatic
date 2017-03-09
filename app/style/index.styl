@@ -1,8 +1,15 @@
 .html-styles
 .html-icons
+.html-patterns
   &
   body
-    background transparent
+    background-color $hexPorcelain
+
+.html-components
+  &
+  body
+    height 100%
+    background url($transparentBackground)
 
 [v-cloak]
   display none!important
@@ -18,18 +25,39 @@
 .h1
   font-weight 300
   font-size 2rem
+
 .h2
-  font-size 1.25rem
+  padding $paddingLayout 0 0
+  font-size 1.175rem
+  font-weight 400
+  &:after
+    content ''
+    display block
+    height $paddingXLarge
+    border-top $borderDefault
+    margin-top $paddingLarge
 .h3
   font-weight 600
   font-size 1.1rem
+
 .h4
   font-weight 600
   font-size 1rem
 
+.h5
+  font-size .75rem
+
 .small
   font-size .8em
+
+.center
+  text-align center
 
 .devider
   height 1px
   background $borderColorDefault
+
+.bordered-area
+  border $borderDefault
+  padding $paddingNormal
+  position relative

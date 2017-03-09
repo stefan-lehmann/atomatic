@@ -1,9 +1,8 @@
-.dsc-grid.dsc-grid--equal-height.dsc-grid--wrap
+.dsc-grid.dsc-grid--cards
   if icons
     each icon, filename in icons
       .dsc-grid__item
         .dsc-card
-          .dsc-card__head
+          .dsc-card__figure
             .dsc-icon-block!= icon
-          .dsc-card__body
           .dsc-card__footer= filename

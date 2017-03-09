@@ -50,8 +50,6 @@ function toggleFullscreenCanvas(event) {
 
 function toggleSection(index) {
   data.sections[index].active = !data.sections[index].active;
-
-  console.log(data.sections[index].active)
 }
 
 function getSectionData() {

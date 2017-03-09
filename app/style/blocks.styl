@@ -19,24 +19,19 @@
 
 .color-block
   height 0
-  margin ($paddingNormal * -1 - 1px)
-  margin-bottom 0
+  margin 0
   padding-top 60%
   position relative
   z-index 1
-  border $borderDefault
 
   &:before
-    absolute(0,0,0,0,'')
+    absolute(-10px,-10px,0,-10px,'')
     background inherit
+    box-shadow inset 0 0 2px 0 rgba($hexBlack, 0.1)
 
   &:after
     absolute(0,0,0,0,'')
-    background-color $hexWhite
-    background-image linear-gradient(45deg, $hexAlto 25%, transparent 25%, transparent 75%, $hexAlto 75%, $hexAlto),
-    linear-gradient(45deg, $hexAlto 25%, transparent 25%, transparent 75%, $hexAlto 75%, $hexAlto);
-    background-size 20px 20px
-    background-position 0 0, 10px 10px
+    background url($transparentBackground)
     z-index -5
 
   &__title
@@ -44,3 +39,35 @@
     transform translateY(-50%)
     text-align center
     color $colorTextInvert
+
+.fonts
+  margin-top $paddingXLarge
+  &:first-child
+    margin-top 0
+  &__head
+    font-size .75em
+    opacity .75
+    padding-bottom @font-size
+  &__body
+    &&--xsmall
+      font-size .85em
+    &&--small
+      font-size 1em
+    &&--medium
+      font-size 1.35em
+    &&--large
+      font-size 1.75em
+
+  &__chars
+    display flex
+    flex-wrap wrap
+
+  &__chars-item
+    font-size 1em
+    flex 0 0 2em
+    margin 0 -1px -1px 0
+    padding $paddingNormal
+    border $borderDefault
+    text-align center
+    line-height 1.3em
+    vertical-align baseline

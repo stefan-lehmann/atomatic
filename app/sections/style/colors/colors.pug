@@ -1,9 +1,9 @@
-.dsc-grid.dsc-grid--equal-height.dsc-grid--wrap
+.dsc-grid.dsc-grid--cards
   if properties && properties.colors
     for color in properties.colors
       .dsc-grid__item
         .dsc-card
-          .dsc-card__head
+          .dsc-card__figure
             .dsc-color-block(class= color.viewerClassName)
               .dsc-color-block__title.dsc-h3(style="color: " + color.textColor)= color.value
           .dsc-card__body
