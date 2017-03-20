@@ -72,14 +72,14 @@ class DesignSystemCreator {
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
       DataLoader: StylesDataLoader
-    }).collectMatchingSections(ConfigManager.get('sections'), 'style');
+    }).collectMatchingSections(ConfigManager.get('sections'));
 
     new IconCollector({
       conf: ConfigManager,
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths
-    }).collectMatchingSections(ConfigManager.get('sections'), 'icons');
+    }).collectMatchingSections(ConfigManager.get('sections'));
 
     new PatternCollector({
       conf: ConfigManager,
@@ -87,7 +87,7 @@ class DesignSystemCreator {
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
       DataLoader: PatternDataLoader
-    }).collectMatchingSections(ConfigManager.get('sections'), 'patterns');
+    }).collectMatchingSections(ConfigManager.get('sections'));
 
     new ComponentCollector({
       conf: ConfigManager,
@@ -95,20 +95,19 @@ class DesignSystemCreator {
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
       DataLoader: RecursiveDataLoader
-    }).collectMatchingSections(ConfigManager.get('sections'), 'components');
+    }).collectMatchingSections(ConfigManager.get('sections'));
 
   }
 
   buildApp(ConfigManager) {
 
-    const app = new AppBuilder(ConfigManager, this.CollectorStore, this.Watcher);
-
-    app.generateViewerStyles();
-    app.copyViewerAssets();
-    app.browserifyViewerScripts();
-    app.generateViewerPages();
-    app.renderCollected();
-    app.saveCollectedData();
+    new AppBuilder(ConfigManager, this.CollectorStore, this.Watcher)
+      .browserifyViewerScripts()
+      .generateViewerStyles()
+      .copyViewerAssets()
+      .generateViewerPages()
+      .renderCollected()
+      .saveCollectedData();
   }
 
 }

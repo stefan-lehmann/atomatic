@@ -1,0 +1,13 @@
+.dsc-layout__off-canvas(:class="{'dsc-layout__off-canvas--hidden': fullscreen }")
+  span.dsc-off-canvas__toggle(
+    @click="toggle()",
+    :class="{'dsc-off-canvas__toggle--open': fullscreen }"
+    v-cloak)
+  .dsc-off-canvas__head
+    h2 {{ description }}
+
+  .dsc-off-canvas__body
+    menu-component
+
+  .dsc-off-canvas__footer
+    | Version {{version}}

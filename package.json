@@ -31,9 +31,38 @@
     "Livereload",
     "Browser-Sync"
   ],
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "plugins": [
+            "import-glob"
+          ],
+          "presets": [
+            [
+              "env",
+              {
+                "targets": {
+                  "browsers": [
+                    "last 2 versions"
+                  ]
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
   "dependencies": {
+    "babel-plugin-import-glob": "^1.0.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.2.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babelify": "^7.3.0",
     "browser-sync": "^2.18.6",
-    "browserify": "9.0.3",
+    "browserify": "^14.1.0",
     "chokidar": "^1.6.1",
     "color-namer": "^1.1.0",
     "config": "^1.24.0",
@@ -46,15 +75,16 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.1",
-    "gulp-flatten": "~0.2.0",
+    "gulp-flatten": "^0.3.1",
     "gulp-order": "^1.1.1",
     "gulp-plumber": "^1.1.0",
     "gulp-pug": "^3.2.0",
     "gulp-rename": "~1.2.2",
-    "gulp-stylus": "~2.3.0",
+    "gulp-stylus": "^2.6.0",
     "gulp-util": "~3.0.7",
     "json-schema-faker": "^0.4.0",
     "json5": "^0.5.1",
+    "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "mathjs": "^3.8.1",
     "mime": "^1.3.4",
@@ -65,13 +95,21 @@
     "obj-flatten": "^2.0.0",
     "phantomjs2": "^2.2.0",
     "promise": "~7.1.1",
+    "pugify": "^2.1.0",
     "scalpel": "^2.1.0",
     "slugify": "^1.1.0",
-    "sync-request": "^3.0.0",
+    "stringify": "^5.1.0",
+    "sync-request": "^4.0.1",
     "through2": "^2.0.3",
     "tinycolor2": "^1.4.1",
+    "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0",
-    "vue": "^2.1.8",
-    "vue-resource": "^1.0.3"
+    "vue": "^2.2.1",
+    "vue-class-component": "^5.0.0",
+    "vue-resource": "^1.2.1",
+    "vueify": "^9.4.1",
+    "vuex": "^2.2.1",
+    "vuex-localstorage": "^1.0.0",
+    "watchify": "^3.9.0"
   }
 }

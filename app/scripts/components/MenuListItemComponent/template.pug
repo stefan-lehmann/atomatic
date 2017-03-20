@@ -1,0 +1,17 @@
+li.dsc-nav__list-item(v-if="isParentItem()")
+  span(
+  @click="toggle()",
+  :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__list-item--active' : '']"
+  ) {{ item.title }}
+
+  menu-list-component(
+  v-if="activeState === true",
+  :items="item.urls",
+  :level="level+1"
+  )
+
+li.dsc-nav__list-item(v-else)
+  span(
+  @click="setIframeUrl()",
+  :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__list-item--active' : '']"
+  ) {{ item.title }}

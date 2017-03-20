@@ -1,0 +1,10 @@
+.dsc-nav
+  ul.dsc-nav__list(
+  :class="'dsc-nav__list--level'+level"
+  )
+    menu-list-item-component(
+    v-for="(sectionItem, index) in sections",
+    :key="sectionItem.title",
+    :item="sectionItem",
+    :level="level"
+    )

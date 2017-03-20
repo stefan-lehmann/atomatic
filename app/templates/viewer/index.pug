@@ -13,16 +13,10 @@ html
 
     link(href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en", rel="stylesheet")
     link(href="./css/app.css", rel="stylesheet")
-  body
-    .dsc-layout#viewer()
-      .dsc-layout__off-canvas(v-bind:class="{'dsc-layout__off-canvas--hidden': isFullscreenCanvas() }")
-        button.dsc-off-canvas__toggle(
-        v-on:click="toggleFullscreenCanvas",
-        v-bind:class="{'dsc-off-canvas__toggle--open': isFullscreenCanvas() }"
-        v-cloak)
-        include ./_offCanvas
 
-      .dsc-layout__canvas
-        iframe.dsc-layout__iframe(name="viewer", v-if="hash", v-bind:src="hash")
+  body
+    #viewer.dsc-layout
+      layout-off-canvas(description= description, version= version)
+      layout-canvas
 
     script(type="text/javascript", src="./scripts/app.js")
