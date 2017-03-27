@@ -1,8 +1,10 @@
 li.dsc-nav__list-item(v-if="isParentItem()")
   span(
   @click="toggle()",
-  :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__list-item--active' : '']"
+  :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__link--active' : '', current ? 'dsc-nav__link--current' : '']"
   ) {{ item.title }}
+    span.dsc-nav__link-icon
+      include ../../../images/svg/angle-down.svg
 
   menu-list-component(
   v-if="activeState === true",
@@ -10,8 +12,9 @@ li.dsc-nav__list-item(v-if="isParentItem()")
   :level="level+1"
   )
 
+
 li.dsc-nav__list-item(v-else)
   span(
   @click="setIframeUrl()",
-  :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__list-item--active' : '']"
+  :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__list-item--active' : '', current ? 'dsc-nav__link--current' : '']"
   ) {{ item.title }}

@@ -53,6 +53,9 @@ class MenuListItemComponent extends VueComponent {
   get activeState() {
     return this.$store.getters.menuItemActiveState[this.item.url];
   }
+  get current() {
+    return this.$store.getters.iframeUrl === this.item.url;
+  }
 }
 
 VueComponent.register(MenuListItemComponent, props);

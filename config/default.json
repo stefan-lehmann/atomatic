@@ -1,11 +1,12 @@
 {
-  "baseDir": "demo/source",
+  "baseDir": "source/styleguide",
   "dest": "public",
   "templateExt": "pug",
   "htmlExt": "html",
   "dataExt": "json5",
   "markdownExt": "md",
   "defaultDataFileName": "data",
+  "dumpData": true,
   "sections": [
     {
       "title": "Style",
@@ -52,12 +53,6 @@
 //      "generator": "pages"
 //    }
   ],
-  "templateEngine": {
-    "name": "http",
-    "options": {
-      "url": "https://localhost:9999"
-    }
-  },
   "app": {
     "viewerRootPath": "example",
     "globals": {

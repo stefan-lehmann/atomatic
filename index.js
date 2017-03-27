@@ -21,8 +21,7 @@ class DesignSystemCreator {
     ConfigManager.initConfig(config);
 
     this.TemplateEngine = new TemplateEngine(
-      ConfigManager.get('baseDir'),
-      ConfigManager.get('htmlExt'));
+      ConfigManager.get('baseDir'));
 
     this.CollectorStore = new CollectorStore({
       conf: ConfigManager,

@@ -8,7 +8,9 @@
   background-color $colorBackgroundDefault
 
   &__off-canvas
-    flex 0 0 190px
+    flex-grow 0
+    flex-shrink 0
+    flex-basis 220px
     display flex
     flex-direction column
     margin-left 0
@@ -18,12 +20,18 @@
     transition all $timingNormal ease-in-out
 
     &&--hidden
-      margin-left -190px
+      margin-left (@flex-basis*-1)
       box-shadow 0 0 0 0 transparent
       z-index 0
 
   &__canvas
-    flex 2 2
+    flex-grow 0
+    flex-shrink 0
+    flex-basis 100%
+    @media $mediaMinTabletMid
+      flex-grow 2
+      flex-shrink 2
+
 
   &__iframe
     width 100%

@@ -13,8 +13,10 @@
     line-height 20px
     box-sizing content-box
     vertical-align middle
-    transition all 0s linear 0s
+    transition all $timingFast ease-in-out 0s
     color $colorTextInvert
+    cursor pointer
+    text-align center
 
     &:after
       content '×'
@@ -24,12 +26,12 @@
       height 23px
       font-size 20px
       font-weight normal
-      background-color $colorBackgroundInvert
+      background-color $colorPrimary
       box-shadow $shadowDropDefault
       border-top-right-radius $borderRadiusDefault
       border-bottom-right-radius $borderRadiusDefault
       z-index -1
-      transition all 0s linear $timingNormal
+      transition all $timingFast ease-in-out $timingNormal
 
       &:after
         content '»'
@@ -40,16 +42,25 @@
 
   &__head
     flex-basis 80px
-    background-color $colorBackgroundInvert
+    background-color $colorPrimary
     color $colorTextInvert
     display flex
     flex-direction row
     align-items center
     justify-content center
     text-align center
+    position relative
 
     h2
       padding $paddingLayout
+      font-size 1.2em
+      font-weight 300
+
+    svg
+      absolute(50%,null,null,50%)
+      width 100%
+      opacity .85
+      transform translate(-50%,-50%) rotateY(180deg)
 
   &__body
     flex 2 2
@@ -61,23 +72,48 @@
     font-size .7em
 
 .nav
-  padding $paddingLarge
-  font-size .8em
+  font-size .925em
+  margin-top $paddingXLarge
 
   &__list
     margin-bottom $paddingNormal
 
-    &&--level1
-      margin-left $paddingLarge
-
   &__link
     display block
-    padding $paddingSmall
+    padding $paddingNormal $paddingXLarge $paddingNormal $paddingLarge
     color inherit
     cursor pointer
+    position relative
+    line-height 18px
+    background-color transparent
+    transition background-color $timingNormal ease-in-out
 
     &&--level0
       font-weight bold
 
-    .nav__list-item--active > &
-      color $colorPrimary
+    &&--level1
+        padding-left $paddingLarge*2
+
+    &&--level2
+      font-size .878em
+      padding-left $paddingLarge*3
+      padding-right $paddingNormal
+
+    &&--current
+      color $hexMaroonFlush
+
+    &:hover
+    &:focus
+      background $hexAlto
+
+    &-icon
+      width 24px
+      height @width
+      position absolute
+      right $paddingNormal
+      top s('calc(50% - %s)', @height/2)
+      transform rotate(0deg)
+      transition transform $timingNormal ease-in-out
+
+      .nav__link.nav__link--active &
+        transform rotate(-180deg)
