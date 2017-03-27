@@ -46,16 +46,19 @@ class DesignSystemCreator {
       });
     }
 
-    this.collect(ConfigManager);
-    this.buildApp(ConfigManager);
+    this
+      .collect(ConfigManager)
+      .buildApp(ConfigManager)
+      .onEndAll(() => {
+        if (!watch && typeof cb === 'function') {
+          this.TemplateEngine.kill();
+          cb();
+        }
+      });
 
     if (watch) {
       this.Watcher.start();
       this.server.addRoutes();
-    }
-
-    if (!watch && typeof cb === 'function') {
-      cb();
     }
   }
 
@@ -96,17 +99,18 @@ class DesignSystemCreator {
       DataLoader: RecursiveDataLoader
     }).collectMatchingSections(ConfigManager.get('sections'));
 
+    return this;
   }
 
-  buildApp(ConfigManager) {
+  buildApp(ConfigManager, cb) {
 
-    new AppBuilder(ConfigManager, this.CollectorStore, this.Watcher)
+    return new AppBuilder(ConfigManager, this.CollectorStore, this.Watcher)
       .browserifyViewerScripts()
       .generateViewerStyles()
       .copyViewerAssets()
       .generateViewerPages()
       .renderCollected()
-      .saveCollectedData();
+      .saveCollectedData()
   }
 
 }

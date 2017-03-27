@@ -53,6 +53,7 @@
 //      "generator": "pages"
 //    }
   ],
+  "logLevel": 2,
   "app": {
     "viewerRootPath": "example",
     "globals": {
