@@ -14,7 +14,7 @@
       "generator": "style",
       "generatedViewerCssFile": "generated.css",
       "cssPreprocessorVars": {
-        "filename": "demo/css/variables.json",
+        "filename": "source/css/variables.json",
         "delimiter": "-"
       },
       "cssSource": "public/css/*.css"
@@ -22,8 +22,7 @@
     {
       "title": "Icons",
       "source": "icons",
-      "generator": "icons",
-      "svgSource": "public/svgs/*.svg"
+      "generator": "icons"
     },
     {
       "title": "Patterns",
