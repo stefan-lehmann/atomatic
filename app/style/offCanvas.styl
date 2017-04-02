@@ -112,8 +112,8 @@
       position absolute
       right $paddingNormal
       top s('calc(50% - %s)', @height/2)
-      transform rotate(0deg)
+      transform rotate(-180deg)
       transition transform $timingNormal ease-in-out
 
       .nav__link.nav__link--active &
-        transform rotate(-180deg)
+        transform rotate(0)

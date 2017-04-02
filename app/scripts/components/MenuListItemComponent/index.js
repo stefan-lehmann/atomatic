@@ -27,11 +27,10 @@ class MenuListItemComponent extends VueComponent {
 
   setIframeUrl() {
     const
-      {urls = []} = this.item,
-      [first = {url: ''}] = urls,
-      {url = first.url} =  this.item;
+      {urls = [], url: baseUrl} = this.item,
+      [resolved = {url: baseUrl}] = urls;
 
-    this.$store.dispatch('setIframeUrl', url);
+    this.$store.dispatch('setIframeUrl', resolved.url);
   }
 
   isParentItem() {

@@ -1,91 +1,130 @@
-.dsc-section
-  .dsc-section__head
-    .dsc-h2 Input
-  .dsc-section__body
-    | Text #[br]
-    input(type="text", placeholder="Text")
-  .dsc-section__body
-    | Password #[br]
-    input(type="password", value="Password")
-  .dsc-section__body
-    | Search #[br]
-    input(type="search", placeholder="Search")
-  .dsc-section__body
-    | Email #[br]
-    input(type="email", placeholder="donec@congue.io")
-  .dsc-section__body
-    | Url #[br]
-    input(type="url", placeholder="https://congue.io")
-  .dsc-section__body
-    | Number #[br]
-    input(type="number", placeholder="0", step="10")
-  .dsc-section__body
-    | Date #[br]
-    input(type="date")
-  .dsc-section__body
-    | Month #[br]
-    input(type="month")
-  .dsc-section__body
-    | Week #[br]
-    input(type="week")
-  .dsc-section__body
-    | Time #[br]
-    input(type="time")
-  .dsc-section__body
-    | Datetime local #[br]
-    input(type="datetime-local")
-  .dsc-section__body
-    | Color #[br]
-    input(type="color", value="#ff0000")
+.dsc-card
+  .dsc-card__head Input
+  .dsc-card__body
+    .dsc-forms
+      .dsc-forms__head Text
+      .dsc-forms__body
+        input(type="text", placeholder="Text")
 
-.dsc-section
-  .dsc-section__head
-    .dsc-h2 Radio
-  .dsc-section__body
-    input(type="radio", name="radio")
-    | Proin vitae varius justo #[br]
-    input(type="radio", name="radio")
-    | Suspendisse accumsan viverra #[br]
-    input(type="radio", name="radio")
-    | Donec congue at nibh at consequat
+      .dsc-forms__head Password
+      .dsc-forms__body
+        input(type="password", value="Password")
 
-.dsc-section
-  .dsc-section__head
-    .dsc-h2 Checkbox
-  .dsc-section__body
-    input(type="checkbox", name="checkbox[]")
-    | Proin vitae varius justo
-    br
-    input(type="checkbox", name="checkbox[]")
-    | Suspendisse accumsan viverra
-    br
-    input(type="checkbox", name="checkbox[]")
-    | Donec congue at nibh at consequat
+      .dsc-forms__head Search
+      .dsc-forms__body
+        input(type="search", placeholder="Search")
 
-.dsc-section
-  .dsc-section__head
-    .dsc-h2 Select
-  .dsc-section__body
-    select(placeholder="Fusce ut nulla")
-      option Lorem ipsum dolo
-      option Etiam mattis
-      option Proin ornare
-      option Nunc vestibulum
+      .dsc-forms__head Email
+      .dsc-forms__body
+        input(type="email", placeholder="donec@congue.io")
 
-  .dsc-section__head
-    .dsc-h2 Textarea
-  .dsc-section__body
-    textarea(cols="30", rows="10", placeholder="Cras in sem sit amet justo condimentum dignissim")
+      .dsc-forms__head Url
+      .dsc-forms__body
+        input(type="url", placeholder="https://congue.io")
 
-  .dsc-section__head
-    .dsc-h2 Datalist (HTML5)
-  .dsc-section__body
-    datalist
-      option(value="Quisque varius")
-      option(value="Donec at ante")
-      option(value="Curabitur efficitur")
-      option(value="Etiam volutpat")
-      option(value="Sed sit amet")
-  .dsc-section_foot.
-    Note: The datalist tag is not supported in Safari or IE9 (and earlier). Use a
-    #[a(href="https://css-tricks.com/relevant-dropdowns-polyfill-for-datalist/", target="_blank") polifyfill].
+      .dsc-forms__head Number
+      .dsc-forms__body
+        input(type="number", placeholder="0", step="10")
+
+      .dsc-forms__head Date
+      .dsc-forms__body
+        input(type="date")
+
+      .dsc-forms__head Month
+      .dsc-forms__body
+        input(type="month")
+
+      .dsc-forms__head Week
+      .dsc-forms__body
+        input(type="week")
+
+      .dsc-forms__head Time
+      .dsc-forms__body
+        input(type="time")
+
+      .dsc-forms__head Datetime local
+      .dsc-forms__body
+        input(type="datetime-local")
+
+      .dsc-forms__head Color
+      .dsc-forms__body
+        input(type="color", value="#ff0000")
+
+
+.dsc-card
+  .dsc-card__head Radio
+  .dsc-card__body
+    .dsc-forms
+      .dsc-forms__body
+        label
+          input(type="radio", name="radio")
+          | Proin vitae varius justo
+
+    .dsc-forms
+      .dsc-forms__body
+        label
+          input(type="radio", name="radio")
+          | Suspendisse accumsan viverra
+
+    .dsc-forms
+      .dsc-forms__body
+        label
+          input(type="radio", name="radio")
+          | Donec congue at nibh at consequat
+
+.dsc-card
+  .dsc-card__head Checkbox
+  .dsc-card__body
+    .dsc-forms
+      .dsc-forms__body
+        label
+          input(type="checkbox", name="checkbox[]")
+          | Proin vitae varius justo
+
+      .dsc-forms
+        .dsc-forms__body
+          label
+            input(type="checkbox", name="checkbox[]")
+            | Suspendisse accumsan viverra
+
+      .dsc-forms
+        .dsc-forms__body
+          label
+            input(type="checkbox", name="checkbox[]")
+            | Donec congue at nibh at consequat
+
+.dsc-card
+  .dsc-card__head Select
+  .dsc-card__body
+    .dsc-forms
+      .dsc-forms__body
+        select(placeholder="Fusce ut nulla")
+          option Lorem ipsum dolo
+          option Etiam mattis
+          option Proin ornare
+          option Nunc vestibulum
+
+.dsc-card
+  .dsc-card__head Textarea
+  .dsc-card__body
+    .dsc-forms
+      .dsc-forms__body
+        textarea(
+        cols="30", rows="10",
+        placeholder="Cras in sem sit amet justo condimentum dignissim")
+
+.dsc-card
+  .dsc-card__head Datalist (HTML5)
+  .dsc-card__body
+    .dsc-forms
+      .dsc-forms__body
+        input(
+        list="volutpat",
+        name="volutpat",
+        placeholder="Datalist")
+        datalist(id="volutpat")
+          option(value="Quisque varius")
+          option(value="Donec at ante")
+          option(value="Curabitur efficitur")
+          option(value="Etiam volutpat")
+          option(value="Sed sit amet")

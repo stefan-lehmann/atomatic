@@ -10,6 +10,7 @@ const
   IconCollector = require('./lib/collectors/IconCollector'),
   PatternCollector = require('./lib/collectors/PatternCollector'),
   ComponentCollector = require('./lib/collectors/ComponentCollector'),
+  TemplateCollector = require('./lib/collectors/TemplateCollector'),
   DevServer = require('./lib/DevServer'),
   Watcher = require('./lib/Watcher'),
   ConfigManager = require('./lib/ConfigManager');
@@ -92,6 +93,14 @@ class DesignSystemCreator {
     }).collectMatchingSections(ConfigManager.get('sections'));
 
     new ComponentCollector({
+      conf: ConfigManager,
+      CollectorStore: this.CollectorStore,
+      TemplateEngine: this.TemplateEngine,
+      CollectorPaths: this.CollectorPaths,
+      DataLoader: RecursiveDataLoader
+    }).collectMatchingSections(ConfigManager.get('sections'));
+
+    new TemplateCollector({
       conf: ConfigManager,
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,

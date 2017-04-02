@@ -16,7 +16,6 @@ const actions = {
   },
 
   setIframeUrl: ({commit, state}, iframeUrl) => {
-    console.log('setIframeUrl', state.sections)
     commit('setIframeUrl', iframeUrl);
   }
 };
