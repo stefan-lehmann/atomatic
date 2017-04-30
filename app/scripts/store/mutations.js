@@ -12,15 +12,23 @@ const mutations = {
   toggleMenuItemActiveState: (state, payload) => {
     const
       {url} = payload,
-      currentState = state.menuItemActiveState[url],
+      currentState = state.menuItemActiveStates[url],
       newState = currentState !== undefined ? !currentState : true;
 
-    Vue.set(state.menuItemActiveState, [url], newState);
+    Vue.set(state.menuItemActiveStates, [url], newState);
+
   },
 
-  setIframeUrl: (state, iframeUrl) => {
-    window.location.hash = iframeUrl;
-    state.iframeUrl = iframeUrl;
+  setIframeState: (state, payload) => {
+    const {url = ''} = payload;
+    if (url !== '') {
+      Vue.set(state.iframeStates, [url], payload);
+    }
+  },
+
+  setUrl: (state, url) => {
+    window.location.hash = url;
+    state.url = url;
   }
 };
 

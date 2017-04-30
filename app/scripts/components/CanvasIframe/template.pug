@@ -1,0 +1,7 @@
+iframe.dsc-iframe(
+  :src="url",
+  :class="'dsc-iframe--'+modifierClass",
+  @load="updateHeight()",
+  ref="iframe",
+  scrolling="no"
+)

@@ -15,8 +15,8 @@ const actions = {
       });
   },
 
-  setIframeUrl: ({commit, state}, iframeUrl) => {
-    commit('setIframeUrl', iframeUrl);
+  setUrl: ({commit}, url) => {
+    commit('setUrl', url);
   }
 };
 

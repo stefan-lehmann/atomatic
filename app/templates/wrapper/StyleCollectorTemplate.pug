@@ -7,6 +7,8 @@ html.dsc-html-styles
     meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
     title= pageTitle
 
+    link(href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en", rel="stylesheet")
+
     if app && app.cssFiles
       for href in app.cssFiles
         link(href=href, rel="stylesheet")
@@ -17,9 +19,6 @@ html.dsc-html-styles
     if global && global.cssFiles
       for href in global.cssFiles
         link(href=href, rel="stylesheet")
-    if global && global.jsFiles
-      for src in global.jsFiles
-        script(src=src, type="text/javascript")
 
   body.dsc-main-container.dsc-main-container--styles(class="dsc-main-container--styles-"+ type)
     .dsc-main-container__head= pageTitle

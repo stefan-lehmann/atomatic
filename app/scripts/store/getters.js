@@ -1,13 +1,22 @@
 const getters = {
   sections: (state) => state.sections,
 
-  currentSections: (state) => state.urls[state.iframeUrl],
+  currentSections: (state) => {
+
+    if (state.url !== undefined){
+      return state.urls[state.url] || {};
+    } else {
+      return {};
+    }
+  },
 
   fullscreen: (state) => state.fullscreen,
 
-  iframeUrl: (state) => state.iframeUrl,
+  url: (state) => state.url,
 
-  menuItemActiveState: (state) => state.menuItemActiveState
+  menuItemActiveStates: (state) => state.menuItemActiveStates,
+
+  iframeStates: (state) => state.iframeStates
 };
 
 export default getters;

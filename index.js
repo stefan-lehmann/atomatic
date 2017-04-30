@@ -75,22 +75,22 @@ class DesignSystemCreator {
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
       DataLoader: StylesDataLoader
-    }).collectMatchingSections(ConfigManager.get('sections'));
+    }).collectMatchingSections(ConfigManager.get('sections'), 'style');
 
     new IconCollector({
       conf: ConfigManager,
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths
-    }).collectMatchingSections(ConfigManager.get('sections'));
+    }).collectMatchingSections(ConfigManager.get('sections'), 'icons');
 
-    new PatternCollector({
-      conf: ConfigManager,
-      CollectorStore: this.CollectorStore,
-      TemplateEngine: this.TemplateEngine,
-      CollectorPaths: this.CollectorPaths,
-      DataLoader: PatternDataLoader
-    }).collectMatchingSections(ConfigManager.get('sections'));
+    // new PatternCollector({
+    //   conf: ConfigManager,
+    //   CollectorStore: this.CollectorStore,
+    //   TemplateEngine: this.TemplateEngine,
+    //   CollectorPaths: this.CollectorPaths,
+    //   DataLoader: PatternDataLoader
+    // }).collectMatchingSections(ConfigManager.get('sections'), 'patterns');
 
     new ComponentCollector({
       conf: ConfigManager,
@@ -98,7 +98,7 @@ class DesignSystemCreator {
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
       DataLoader: RecursiveDataLoader
-    }).collectMatchingSections(ConfigManager.get('sections'));
+    }).collectMatchingSections(ConfigManager.get('sections'), 'components');
 
     new TemplateCollector({
       conf: ConfigManager,
@@ -106,7 +106,7 @@ class DesignSystemCreator {
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
       DataLoader: RecursiveDataLoader
-    }).collectMatchingSections(ConfigManager.get('sections'));
+    }).collectMatchingSections(ConfigManager.get('sections'), 'templates');
 
     return this;
   }

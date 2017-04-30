@@ -1,5 +1,24 @@
 .dsc-layout__canvas
-  iframe.dsc-layout__iframe(
-  :src="iframeUrl",
-  :class="'dsc-layout__iframe--'+current.generator"
-  )
+  .dsc-main-container(
+  v-if="modifierClass === 'components'",
+  :class="'dsc-main-container--'+modifierClass")
+    .dsc-main-container__head {{pageTitle}}
+    .dsc-main-container__body()
+
+      .dsc-card(v-for="(file, index) in files")
+        .dsc-card__head {{file.title}}
+        .dsc-card__body
+          canvas-iframe(
+          :url="file.realUrl",
+          :modifierClass="modifierClass"
+          )
+    //.dsc-main-container__body(v-else)
+    //  canvas-iframe(
+    //  :url="files[0].realUrl",
+    //  :modifierClass="modifierClass"
+    //  )
+
+  iframe.dsc-main-iframe(
+  v-else,
+  :src="files[0].realUrl",
+  :class="'dsc-main-iframe--'+modifierClass")

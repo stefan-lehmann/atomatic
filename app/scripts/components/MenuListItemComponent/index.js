@@ -25,12 +25,12 @@ class MenuListItemComponent extends VueComponent {
     this.$store.commit('toggleMenuItemActiveState', {url: this.item.url});
   }
 
-  setIframeUrl() {
+  setUrl() {
     const
       {urls = [], url: baseUrl} = this.item,
       [resolved = {url: baseUrl}] = urls;
 
-    this.$store.dispatch('setIframeUrl', resolved.url);
+    this.$store.dispatch('setUrl', resolved.url);
   }
 
   isParentItem() {
@@ -50,10 +50,11 @@ class MenuListItemComponent extends VueComponent {
   }
 
   get activeState() {
-    return this.$store.getters.menuItemActiveState[this.item.url];
+    return this.$store.getters.menuItemActiveStates[this.item.url];
   }
+
   get current() {
-    return this.$store.getters.iframeUrl === this.item.url;
+    return this.$store.getters.url === this.item.url;
   }
 }
 

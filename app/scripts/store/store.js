@@ -1,6 +1,7 @@
 import Vue from 'vue/dist/vue';
 import Vuex from 'vuex';
 import createPersist from 'vuex-localstorage';
+import CircularJSON from 'circular-json';
 
 Vue.use(Vuex);
 
@@ -10,13 +11,17 @@ import actions from './actions';
 
 const store = new Vuex.Store({
   plugins: [createPersist({
-    namespace: 'namespace-for-state',
+    namespace: "atomatic-1",
+    serialize: CircularJSON.stringify,
+    deserialize: CircularJSON.parse,
     initialState: {
-      iframeUrl: '',
+      url: '',
       generatorClass: '',
       fullscreen: false,
       sections: [],
-      menuItemActiveState: {}
+      menuItemActiveStates: {},
+      iframeStates: {},
+      urls: {}
     },
     expires: 7 * 24 * 60 * 60 * 1e3
   })],
@@ -24,6 +29,5 @@ const store = new Vuex.Store({
   mutations,
   actions
 });
-
 
 export default store;

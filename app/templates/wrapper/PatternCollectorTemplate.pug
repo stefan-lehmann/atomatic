@@ -21,16 +21,14 @@ html.dsc-html-patterns
       for src in global.jsFiles
         script(src=src, type="text/javascript")
 
-  body.dsc-main-container.dsc-main-container--patterns
-    .dsc-main-container__head= pageTitle
-    .dsc-main-container__body
-      if description
-        .dsc-text-block!= description
+  body
+    if description
+      .dsc-text-block!= description
 
-      if typeof body == 'string'
-        include ../../sections/patterns/single-pattern
+    if typeof body == 'string'
+      include ../../sections/patterns/single-pattern
+    else
+      if typeof body[0].body == 'string'
+        include ../../sections/patterns/multiple-patterns
       else
-        if typeof body[0].body == 'string'
-          include ../../sections/patterns/multiple-patterns
-        else
-          include ../../sections/patterns/multiple-patterns-mutations
+        include ../../sections/patterns/multiple-patterns-mutations

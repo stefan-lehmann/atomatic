@@ -6,24 +6,35 @@ const props = {
 
 class LayoutCanvas extends VueComponent {
 
-  created() {
-    this.useLocationHashAsIframeUrl();
+
+  mounted() {
+    this.useLocationHashAsUrl();
   }
 
-  useLocationHashAsIframeUrl() {
+  useLocationHashAsUrl() {
     let {hash = ''} = window.location;
     hash = hash.replace(/#/,'');
-    if (hash !== this.$store.getters.iframeUrl) {
-      this.$store.commit('setIframeUrl', hash);
+    if (hash !== this.$store.getters.url) {
+      this.$store.commit('setUrl', hash);
     }
   }
 
-  get iframeUrl() {
-    return this.$store.getters.iframeUrl;
+  get pageTitle() {
+    const {pageTitle} = this.$store.getters.currentSections;
+    return pageTitle;
   }
 
-  get current() {
-    return this.$store.getters.currentSections;
+  get files() {
+    const
+      file = this.$store.getters.currentSections,
+      {grouped: files} = file;
+
+    return files || [file];
+  }
+
+  get modifierClass() {
+    const {generator = ''} = this.$store.getters.currentSections;
+    return generator;
   }
 }
 
