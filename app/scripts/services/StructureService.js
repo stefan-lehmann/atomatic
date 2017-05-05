@@ -4,8 +4,6 @@ class StructureService {
     this.data = data;
     this.maxLevel = 2;
     this.urls = {};
-    this.structure = {};
-
     this.data.map(this.generateSectionStructure.bind(this));
   }
 
@@ -38,7 +36,7 @@ class StructureService {
             return current.urls[redundantIndex];
           }
 
-          const item = getItemFunction(name, url, file, current);
+          const item = getItemFunction({name, url, file, current});
 
           if (lastIndex && hasSiblings && redundantIndex > -1) {
             current = current.urls[redundantIndex];
@@ -71,8 +69,11 @@ class StructureService {
     });
   }
 
-  getVirtualItem(name, url, file) {
-    const {path, ext, generator} = file;
+  getVirtualItem(options) {
+    const
+      {name, url, file} = options,
+      {path, ext, generator} = file;
+
     return {
       name,
       url,
@@ -83,15 +84,17 @@ class StructureService {
     }
   }
 
-  getRealItem(name, url, file, current) {
-    const {path, url:realUrl, title, filename, orderValue, generator} = file;
-    const {title: pageTitle} = current;
+  getRealItem(options) {
+    const
+      {name, url, file, current} = options,
+      {url: fileUrl, title, path, orderValue, generator, asyncContentUrls} = file,
+      {title: pageTitle} = current;
     return {
       name,
       url,
-      realUrl,
+      fileUrl,
+      asyncContentUrls,
       generator,
-      filename,
       title,
       pageTitle,
       orderValue: orderValue || path

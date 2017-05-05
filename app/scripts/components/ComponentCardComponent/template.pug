@@ -1,0 +1,31 @@
+.dsc-card
+  .dsc-card__head
+    .dsc-grid.dsc-grid--center
+      .dsc-grid__item.dsc-grid__item--grow {{file.title}}
+      .dsc-grid__item.dsc-grid__item--auto
+        .dsc-grid
+          .dsc-grid__item
+            button.dsc-button.dsc-button--plain.dsc-button--small(
+            @click="setSourceType('source')",
+            :class="{'dsc-button--selected': sourceType === 'source' }")
+              | HTML
+          .dsc-grid__item
+            button.dsc-button.dsc-button--plain.dsc-button--small(
+            @click="setSourceType('locals')",
+            :class="{'dsc-button--selected': sourceType === 'locals' }")
+              | DATA
+          .dsc-grid__item
+            button.dsc-button.dsc-button--plain.dsc-button--small(
+            @click="setSourceType('schema')",
+            :class="{'dsc-button--selected': sourceType === 'schema' }")
+              | SCHEMA
+  .dsc-card__figure(
+    v-if="sourceType")
+    source-code-component(
+    :language="language",
+    :sourceCode="sourceCode")
+
+  .dsc-card__body.dsc-card__body--transparent(v-else)
+    self-adjusting-iframe-component(
+    :url="file.fileUrl",
+    :modifierClass="modifierClass")

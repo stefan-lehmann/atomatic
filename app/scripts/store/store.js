@@ -11,7 +11,7 @@ import actions from './actions';
 
 const store = new Vuex.Store({
   plugins: [createPersist({
-    namespace: "atomatic-1",
+    namespace: "atomatic-3",
     serialize: CircularJSON.stringify,
     deserialize: CircularJSON.parse,
     initialState: {
@@ -21,7 +21,9 @@ const store = new Vuex.Store({
       sections: [],
       menuItemActiveStates: {},
       iframeStates: {},
-      urls: {}
+      urls: {},
+      componentSourceType: {},
+      componentSourceCodes: {}
     },
     expires: 7 * 24 * 60 * 60 * 1e3
   })],

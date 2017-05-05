@@ -1,7 +1,7 @@
 {
   "name": "atomatic",
   "description": "An easy to use build and development tool for Atomic Design Systems, that works with Webpack and Gulp.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "url": "https://github.com/stefan-lehmann/atomatic",
   "main": "./index.js",
@@ -111,6 +111,7 @@
     "vinyl-transform": "^1.0.0",
     "vue": "^2.2.1",
     "vue-class-component": "^5.0.0",
+    "vue-highlightjs": "^1.2.2",
     "vue-resource": "^1.2.1",
     "vueify": "^9.4.1",
     "vuex": "^2.2.1",

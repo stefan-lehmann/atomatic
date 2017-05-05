@@ -16,7 +16,26 @@ const mutations = {
       newState = currentState !== undefined ? !currentState : true;
 
     Vue.set(state.menuItemActiveStates, [url], newState);
+  },
 
+  setComponentSourceType: (state, payload) => {
+    const
+      {url, sourceType = null} = payload,
+      currentSourceType = state.componentSourceType[url],
+      newSourceType = currentSourceType !== sourceType ? sourceType : null;
+
+    Vue.set(state.componentSourceType, [url], newSourceType);
+  },
+
+  setComponentSourceCodes: (state, payload) => {
+    const
+      {url, sourceType = null, data=''} = payload;
+
+    if (!state.componentSourceCodes[url]) {
+      Vue.set(state.componentSourceCodes, [url], {});
+    }
+
+    Vue.set(state.componentSourceCodes[url], sourceType, data);
   },
 
   setIframeState: (state, payload) => {

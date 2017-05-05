@@ -25,10 +25,10 @@ html.dsc-html-patterns
     if description
       .dsc-text-block!= description
 
-    if typeof body == 'string'
+    if typeof source == 'string'
       include ../../sections/patterns/single-pattern
     else
-      if typeof body[0].body == 'string'
+      if typeof source[0].source == 'string'
         include ../../sections/patterns/multiple-patterns
       else
         include ../../sections/patterns/multiple-patterns-mutations

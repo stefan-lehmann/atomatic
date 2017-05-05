@@ -4,7 +4,7 @@ const props = {
   template: require('./template.pug')({})
 };
 
-class LayoutCanvas extends VueComponent {
+class LayoutCanvasComponent extends VueComponent {
 
 
   mounted() {
@@ -38,6 +38,6 @@ class LayoutCanvas extends VueComponent {
   }
 }
 
-VueComponent.register(LayoutCanvas, props);
+VueComponent.register(LayoutCanvasComponent, props);
 
 

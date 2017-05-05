@@ -1,0 +1,16 @@
+.dsc-layout__canvas
+  .dsc-main-container(
+  v-if="modifierClass === 'components'",
+  :class="'dsc-main-container--'+modifierClass")
+    .dsc-main-container__head {{pageTitle}}
+    .dsc-main-container__body()
+
+      component-card-component(v-for="(file, index) in files",
+      :file="file",
+      :index="index",
+      :modifierClass="modifierClass")
+
+  iframe.dsc-main-iframe(
+  v-else,
+  :src="files[0].fileUrl",
+  :class="'dsc-main-iframe--'+modifierClass")

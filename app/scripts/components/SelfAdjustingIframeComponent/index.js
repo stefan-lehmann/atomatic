@@ -19,18 +19,15 @@ const props = {
   template: require('./template.pug')({})
 };
 
-class CanvasIframe extends VueComponent {
-
-  data() {
-    return {height: 0};
-  }
+class SelfAdjustingIframeComponent extends VueComponent {
 
   onUrlChange() {
-    this.setHeight(this.$store.getters.iframeStates[this.url].height);
+    const {[this.url]: {height = 0} = {height: 0}} = this.$store.getters.iframeStates;
+    this.setHeight(height);
   }
 
   mounted() {
-    this.setHeight(this.$store.getters.iframeStates[this.url].height);
+    this.onUrlChange();
   }
 
   beforeDestroy() {
@@ -59,6 +56,6 @@ class CanvasIframe extends VueComponent {
 
 }
 
-VueComponent.register(CanvasIframe, props);
+VueComponent.register(SelfAdjustingIframeComponent, props);
 
 

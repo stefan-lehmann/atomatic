@@ -1,0 +1,6 @@
+pre.dsc-source-code(
+:class="'dsc-source-code--'+language",
+v-highlightjs="sourceCode")
+  if title
+    h6.dsc-source-code__title {{title}}
+  code.dsc-source-code__code(:class="language")

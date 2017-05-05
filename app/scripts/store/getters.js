@@ -16,6 +16,10 @@ const getters = {
 
   menuItemActiveStates: (state) => state.menuItemActiveStates,
 
+  componentSourceType: (state) => state.componentSourceType,
+
+  componentSourceCodes: (state) => state.componentSourceCodes,
+
   iframeStates: (state) => state.iframeStates
 };
 

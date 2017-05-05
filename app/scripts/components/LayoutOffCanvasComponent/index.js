@@ -14,7 +14,7 @@ const props = {
   template: require('./template.pug')({})
 };
 
-class LayoutOffCanvas extends VueComponent {
+class LayoutOffCanvasComponent extends VueComponent {
 
 
   toggle() {
@@ -26,6 +26,6 @@ class LayoutOffCanvas extends VueComponent {
   }
 }
 
-VueComponent.register(LayoutOffCanvas, props);
+VueComponent.register(LayoutOffCanvasComponent, props);
 
 
