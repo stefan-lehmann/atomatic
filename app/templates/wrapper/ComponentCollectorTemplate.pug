@@ -10,10 +10,6 @@ html.dsc-html-components
     if app && app.cssFiles
       for href in app.cssFiles
         link(href=href, rel="stylesheet")
-    if app && app.jsFiles
-      for src in app.jsFiles
-        script(src=src, type="text/javascript")
-
     if global && global.cssFiles
       for href in global.cssFiles
         link(href=href, rel="stylesheet")

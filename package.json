@@ -74,6 +74,7 @@
     "css": "^2.2.1",
     "css-shorthand-expand": "https://github.com/stefan-lehmann/css-shorthand-expand",
     "cssstats": "^3.0.0",
+    "decamelize": "^1.2.0",
     "express": "^4.14.0",
     "extend": "^3.0.0",
     "glob": "^7.0.0",
@@ -110,13 +111,11 @@
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0",
     "vue": "^2.2.1",
-    "vue-class-component": "^5.0.0",
     "vue-highlightjs": "^1.2.2",
     "vue-resource": "^1.2.1",
     "vueify": "^9.4.1",
     "vuex": "^2.2.1",
     "vuex-localstorage": "^1.0.0",
-    "vuex-persistedstate": "^1.4.1",
     "watchify": "^3.9.0"
   }
 }

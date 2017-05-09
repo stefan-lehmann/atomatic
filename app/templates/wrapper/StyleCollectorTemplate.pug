@@ -11,16 +11,14 @@ html.dsc-html-styles
 
     if app && app.cssFiles
       for href in app.cssFiles
-        link(href=href, rel="stylesheet")
-    if app && app.jsFiles
-      for src in app.jsFiles
-        script(src=src, type="text/javascript")
-
+        link(href=href, rel="stylesheet", test="app")
     if global && global.cssFiles
       for href in global.cssFiles
-        link(href=href, rel="stylesheet")
+        link(href=href, rel="stylesheet", test="global")
 
-  body.dsc-main-container.dsc-main-container--styles(class="dsc-main-container--styles-"+ type)
+  body.dsc-main-container.dsc-main-container--styles(
+  v-persist-scroll-pos="",
+  class="dsc-main-container--styles-"+ type)
     .dsc-main-container__head= pageTitle
     .dsc-main-container__body
       if description

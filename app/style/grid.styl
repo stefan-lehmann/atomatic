@@ -1,7 +1,10 @@
 .grid
+  margin-bottom $paddingXLarge
   display flex
   flex-flow row nowrap
   align-items stretch
+  &:last-child
+    margin-bottom 0
 
   &&--equal-height
     > .grid__item
@@ -76,7 +79,8 @@
             flex-basis (100%/num)
     &&--auto
       flex-basis 0
-
+    &&--1-1
+      flex-basis 100%
     &&--1-2
       flex-basis (100%/2)
 

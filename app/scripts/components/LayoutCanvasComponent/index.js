@@ -6,7 +6,6 @@ const props = {
 
 class LayoutCanvasComponent extends VueComponent {
 
-
   mounted() {
     this.useLocationHashAsUrl();
   }

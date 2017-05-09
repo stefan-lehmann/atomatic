@@ -1,4 +1,5 @@
 import Vue from 'vue/dist/vue';
+import decamelize from 'decamelize';
 
 const internalHooks = [
     'data',
@@ -58,9 +59,12 @@ class VueComponent {
     return this.options;
   }
 
-  static register(...attrs){
-    const component = new attrs[0](attrs[1]);
-    Vue.component(component.name, component);
+  static register(...attrs) {
+    const
+      component = new attrs[0](attrs[1]),
+      [name] = decamelize(component.name, '-').split('-component');
+
+    Vue.component(name, component);
   }
 }
 

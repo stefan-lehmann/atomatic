@@ -2,11 +2,18 @@
   padding .15em .5em
   font-weight 400
   border-radius $borderRadiusDefault
+  position relative
   svg
     height 1em
     width @height
+    position absolute
+    top 48%
+    left 50%
+    transform translate(-50%, -50%)
   &&--small
     font-size .75rem
   &&--selected
     background $colorText
     color $colorTextInvert
+  &&--icon
+      width 1em

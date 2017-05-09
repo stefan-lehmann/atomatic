@@ -16,7 +16,6 @@ const props = {
 
 class LayoutOffCanvasComponent extends VueComponent {
 
-
   toggle() {
     this.$store.commit('toggleFullscreen');
   }

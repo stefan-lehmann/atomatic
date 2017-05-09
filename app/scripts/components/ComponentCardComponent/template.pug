@@ -3,29 +3,41 @@
     .dsc-grid.dsc-grid--center
       .dsc-grid__item.dsc-grid__item--grow {{file.title}}
       .dsc-grid__item.dsc-grid__item--auto
-        .dsc-grid
+        .dsc-grid.dsc-grid--padding.dsc-grid--center
+
           .dsc-grid__item
             button.dsc-button.dsc-button--plain.dsc-button--small(
             @click="setSourceType('source')",
             :class="{'dsc-button--selected': sourceType === 'source' }")
               | HTML
+
           .dsc-grid__item
             button.dsc-button.dsc-button--plain.dsc-button--small(
             @click="setSourceType('locals')",
             :class="{'dsc-button--selected': sourceType === 'locals' }")
               | DATA
-          .dsc-grid__item
+
+          .dsc-grid__item(
+          v-if="modifierClass === 'components'",
+          )
             button.dsc-button.dsc-button--plain.dsc-button--small(
             @click="setSourceType('schema')",
             :class="{'dsc-button--selected': sourceType === 'schema' }")
               | SCHEMA
+
+          .dsc-grid__item
+            a.dsc-button.dsc-button--plain.dsc-button--small(
+            :href="file.fileUrl",
+            target="file.fileUrl")
+              include ../../../images/svg/launch.svg
+
   .dsc-card__figure(
-    v-if="sourceType")
-    source-code-component(
+  v-if="sourceType")
+    source-code(
     :language="language",
     :sourceCode="sourceCode")
 
   .dsc-card__body.dsc-card__body--transparent(v-else)
-    self-adjusting-iframe-component(
+    self-adjusting-iframe(
     :url="file.fileUrl",
     :modifierClass="modifierClass")

@@ -1,11 +1,12 @@
 .dsc-layout__canvas
   .dsc-main-container(
-  v-if="modifierClass === 'components'",
+  v-if="modifierClass === 'components' || modifierClass === 'patterns'",
+  v-persist-scroll-pos="",
   :class="'dsc-main-container--'+modifierClass")
     .dsc-main-container__head {{pageTitle}}
-    .dsc-main-container__body()
+    .dsc-main-container__body
 
-      component-card-component(v-for="(file, index) in files",
+      component-card(v-for="(file, index) in files",
       :file="file",
       :index="index",
       :modifierClass="modifierClass")

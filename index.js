@@ -84,13 +84,13 @@ class DesignSystemCreator {
       CollectorPaths: this.CollectorPaths
     }).collectMatchingSections(ConfigManager.get('sections'), 'icons');
 
-    // new PatternCollector({
-    //   conf: ConfigManager,
-    //   CollectorStore: this.CollectorStore,
-    //   TemplateEngine: this.TemplateEngine,
-    //   CollectorPaths: this.CollectorPaths,
-    //   DataLoader: PatternDataLoader
-    // }).collectMatchingSections(ConfigManager.get('sections'), 'patterns');
+    new PatternCollector({
+      conf: ConfigManager,
+      CollectorStore: this.CollectorStore,
+      TemplateEngine: this.TemplateEngine,
+      CollectorPaths: this.CollectorPaths,
+      DataLoader: PatternDataLoader
+    }).collectMatchingSections(ConfigManager.get('sections'), 'patterns');
 
     new ComponentCollector({
       conf: ConfigManager,

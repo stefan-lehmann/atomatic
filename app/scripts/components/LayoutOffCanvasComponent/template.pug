@@ -7,8 +7,8 @@
     include ../../../images/svg/layer-background.svg
     h2 {{ description }}
 
-  .dsc-off-canvas__body
-    menu-component
+  .dsc-off-canvas__body(v-persist-scroll-pos="'dsc-off-canvas-body'")
+    menu-container
 
   .dsc-off-canvas__footer
     | Version {{version}}

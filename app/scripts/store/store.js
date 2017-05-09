@@ -22,6 +22,7 @@ const store = new Vuex.Store({
       menuItemActiveStates: {},
       iframeStates: {},
       urls: {},
+      scrollPos : {},
       componentSourceType: {},
       componentSourceCodes: {}
     },

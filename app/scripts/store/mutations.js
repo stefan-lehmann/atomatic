@@ -27,6 +27,13 @@ const mutations = {
     Vue.set(state.componentSourceType, [url], newSourceType);
   },
 
+  scrollPos: (state, payload) => {
+    const
+      {id, scrollTop} = payload;
+
+    Vue.set(state.scrollPos, id, scrollTop);
+  },
+
   setComponentSourceCodes: (state, payload) => {
     const
       {url, sourceType = null, data=''} = payload;

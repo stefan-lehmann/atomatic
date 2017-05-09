@@ -10,10 +10,6 @@ html.dsc-html-patterns
     if app && app.cssFiles
       for href in app.cssFiles
         link(href=href, rel="stylesheet")
-    if app && app.jsFiles
-      for src in app.jsFiles
-        script(src=src, type="text/javascript")
-
     if global && global.cssFiles
       for href in global.cssFiles
         link(href=href, rel="stylesheet")
@@ -21,14 +17,4 @@ html.dsc-html-patterns
       for src in global.jsFiles
         script(src=src, type="text/javascript")
 
-  body
-    if description
-      .dsc-text-block!= description
-
-    if typeof source == 'string'
-      include ../../sections/patterns/single-pattern
-    else
-      if typeof source[0].source == 'string'
-        include ../../sections/patterns/multiple-patterns
-      else
-        include ../../sections/patterns/multiple-patterns-mutations
+  body!=source

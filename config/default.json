@@ -29,7 +29,8 @@
       "source": "patterns",
       "generator": "patterns",
       "cssSource": "public/css/*.css",
-      "bemPattern": "[block]__[element]--[modifier]"
+      "bemPattern": "[block]__[element]--[modifier]",
+      "modifierDelimiter": ["{{", "}}"]
     },
     {
       "title": "Atoms",
@@ -54,14 +55,14 @@
   ],
   "logLevel": 2,
   "app": {
-    "viewerRootPath": "example",
+    "viewerRootPath": "styleguide",
     "globals": {
       "jsFiles": ['/js/main.bundle.js'],
       "cssFiles": [ '/css/fonts.css', '/css/master.css' ],
     }
   },
   "server": {
-    "name": "Design System Creator",
+    "name": "Atomatic",
     "port": 9000,
     "server": {
     },

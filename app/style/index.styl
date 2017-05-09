@@ -6,6 +6,7 @@
 .h3
 .h4
   margin-bottom .5em
+  width 100%
   &:last-child
     margin-bottom 0
 
@@ -14,15 +15,20 @@
   font-size 2rem
 
 .h2
-  padding $paddingLayout 0 0
+  padding $paddingXLarge 0 0
   font-size 1.175rem
   font-weight 400
+
+  &:first-child
+    padding-top 0
   &:after
     content ''
     display block
-    height $paddingXLarge
+    height $paddingNormal
     border-top $borderDefault
     margin-top $paddingLarge
+
+
 .h3
   font-weight 600
   font-size 1.1rem

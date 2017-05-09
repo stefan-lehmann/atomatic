@@ -6,7 +6,7 @@ li.dsc-nav__list-item(v-if="isParentItem()")
     span.dsc-nav__link-icon
       include ../../../images/svg/angle-down.svg
 
-  menu-list-component(
+  menu-list(
   v-if="activeState === true",
   :items="item.urls",
   :level="level+1"

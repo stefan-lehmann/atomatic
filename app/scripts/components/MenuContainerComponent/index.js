@@ -4,7 +4,7 @@ const props = {
   template: require('./template.pug')({})
 };
 
-class MenuComponent extends VueComponent {
+class MenuContainerComponent extends VueComponent {
 
   beforeCreate() {
     this.$store.dispatch('fetchSections');
@@ -19,6 +19,6 @@ class MenuComponent extends VueComponent {
   }
 }
 
-VueComponent.register(MenuComponent, props);
+VueComponent.register(MenuContainerComponent, props);
 
 

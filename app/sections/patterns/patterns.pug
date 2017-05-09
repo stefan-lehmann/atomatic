@@ -1,0 +1,14 @@
+each version in versions
+  .dsc-grid.dsc-grid--padding.dsc-grid--wrap.dsc-grid--equal-height
+    .dsc-grid__item.dsc-grid__item--1-1
+      .dsc-h2= version.pathEntry
+    each combination in version.combinations
+      .dsc-grid__item
+        .dsc-card
+          .dsc-card__body!= combination.source
+          .dsc-card__footer
+            if combination.modifierClass
+              | #{version.pathEntry + '  +  ' + combination.modifierClass}
+            else
+              | #{version.pathEntry}
+

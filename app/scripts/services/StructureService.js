@@ -112,9 +112,11 @@ class StructureService {
   static sortByOrderValue(a, b) {
     const
       valueA = a.orderValue ? a.orderValue.toLowerCase() : '',
-      valueB = b.orderValue ? b.orderValue.toLowerCase() : '';
+      valueB = b.orderValue ? b.orderValue.toLowerCase() : '',
+      titleA = a.title ? a.title.toLowerCase() : '',
+      titleB = b.title ? b.title.toLowerCase() : '';
 
-    return valueA === valueB ? 0 : valueA < valueB ? -1 : 1;
+    return valueA === valueB ? titleA < titleB ? -1 : 1 : valueA < valueB ? -1 : 1;
   }
 
   static capitalizeString(str) {

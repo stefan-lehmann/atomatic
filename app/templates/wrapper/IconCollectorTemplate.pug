@@ -11,9 +11,6 @@ html.dsc-html-icons
     if app && app.cssFiles
       for href in app.cssFiles
         link(href=href, rel="stylesheet")
-    if app && app.jsFiles
-      for src in app.jsFiles
-        script(src=src, type="text/javascript")
 
   body.dsc-main-container.dsc-main-container--icons
     .dsc-main-container__head= pageTitle
