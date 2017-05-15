@@ -1,21 +1,6 @@
-doctype
-html.dsc-html-styles
-  head
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
-    meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
-    title= pageTitle
+extends ../viewer/layout.pug
 
-    link(href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en", rel="stylesheet")
-
-    if app && app.cssFiles
-      for href in app.cssFiles
-        link(href=href, rel="stylesheet", test="app")
-    if global && global.cssFiles
-      for href in global.cssFiles
-        link(href=href, rel="stylesheet", test="global")
-
+block body
   body.dsc-main-container.dsc-main-container--styles(
   v-persist-scroll-pos="",
   class="dsc-main-container--styles-"+ type)

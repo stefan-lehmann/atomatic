@@ -14,8 +14,12 @@
 
   &__head
     background $colorBackgroundInvert
-    font-size 1.3em
-    font-weight 300
+    font-size 1em
+    font-weight 400
+    color rgba($colorText, .65)
+    svg
+      *:not([fill="none"])
+        fill @color
 
   &__head
   &__body

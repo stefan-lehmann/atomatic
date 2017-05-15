@@ -5,12 +5,13 @@ html
     meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
     meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
-    title= projectTitle
+    title= projectTitle || "styleguide"
 
     style(type="text/css").
       body {height:100vh; width: 100vw; overflow:hidden}
 
-    link(href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en", rel="stylesheet")
+    include inlineFonts
+
     link(href="./css/app.css", rel="stylesheet")
 
   body

@@ -1,20 +1,6 @@
-doctype
-html.dsc-html-components
-  head
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
-    meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
-    title= pageTitle
+extends ../viewer/layout.pug
 
-    if app && app.cssFiles
-      for href in app.cssFiles
-        link(href=href, rel="stylesheet")
-    if global && global.cssFiles
-      for href in global.cssFiles
-        link(href=href, rel="stylesheet")
-    if global && global.jsFiles
-      for src in global.jsFiles
-        script(src=src, type="text/javascript")
+block appStyles
 
+block body
   body!=source
