@@ -30,7 +30,8 @@
       "generator": "patterns",
       "cssSource": "public/css/*.css",
       "bemPattern": "[block]__[element]--[modifier]",
-      "modifierDelimiter": ["{{", "}}"]
+      "modifierDelimiter": ["{{", "}}"],
+      "warnOnMissingDataFile": false
     },
     {
       "title": "Atoms",
@@ -46,7 +47,7 @@
       "title": "Templates",
       "source": "templates",
       "generator": "templates"
-    },
+    }
 //    {
 //      "title": "aaaaa",
 //      "path": "pages",
@@ -57,8 +58,8 @@
   "app": {
     "viewerRootPath": "styleguide",
     "globals": {
-      "jsFiles": ['/js/main.bundle.js'],
-      "cssFiles": [ '/css/fonts.css', '/css/master.css' ],
+      "jsFiles": ["/js/main.bundle.js"],
+      "cssFiles": [ "/css/fonts.css", "/css/master.css" ]
     }
   },
   "server": {

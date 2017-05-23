@@ -1,7 +1,7 @@
 {
   "name": "atomatic",
   "description": "An easy to use build and development tool for Atomic Design Systems, that works with Webpack and Gulp.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "url": "https://github.com/stefan-lehmann/atomatic",
   "main": "./index.js",
@@ -14,7 +14,7 @@
     "name": "Stefan Lehmann"
   },
   "engines": {
-    "node": ">=7.5.0",
+    "node": ">= 7.5.0",
     "yarn": "^0.18.0"
   },
   "bugs": {
@@ -99,7 +99,6 @@
     "nib": "~1.1.0",
     "ntc": "^0.0.1",
     "obj-flatten": "^2.0.0",
-    "phantomjs2": "^2.2.0",
     "promise": "~7.1.1",
     "pugify": "^2.1.0",
     "scalpel": "^2.1.0",
