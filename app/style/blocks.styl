@@ -31,11 +31,15 @@
 
   &:after
     absolute(0,0,0,0,'')
-    background url($transparentBackground)
     z-index -5
+    background-image url($transparentBackground)
+    background-size 20px
+    background-position 0 0
+    background-color $hexPorcelain
 
   &__title
-    absolute(50%,$paddingNormal, null, $paddingNormal)
+    absolute(50%, 0, null, 0)
+    padding 0 $paddingNormal
     transform translateY(-50%)
     text-align center
 
@@ -45,46 +49,46 @@
     margin-top 0
 
   &__head
-    font-size .75em
+    font-size 12px
     opacity .75
-    padding-bottom .5em
+    padding-bottom 8px
 
   &__body
-    padding-bottom .5em
+    padding-bottom 8px
     &:last-child
       padding-bottom 0
 
   &__notice
-    font-size .75em
+    font-size 12px
 
 .fonts
   margin-top $paddingXLarge
   &:first-child
     margin-top 0
   &__head
-    font-size .75em
+    font-size 12px
     opacity .75
     padding-bottom @font-size
   &__body
     &&--xsmall
-      font-size .85em
+      font-size 13.6px
     &&--small
-      font-size 1em
+      font-size 16px
     &&--medium
-      font-size 1.35em
+      font-size 21.6px
     &&--large
-      font-size 1.75em
+      font-size 28px
 
   &__chars
     display flex
     flex-wrap wrap
 
   &__chars-item
-    font-size 1em
-    flex 0 0 2.1em
+    font-size 16px
+    flex 0 0 528px
     margin 0 -1px -1px 0
     padding $paddingNormal
     border $borderDefault
     text-align center
-    line-height 1.3em
+    line-height 20.8em
     vertical-align baseline
