@@ -31,11 +31,8 @@
 
   &:after
     absolute(0,0,0,0,'')
+    background url($transparentBackground)
     z-index -5
-    background-image url($transparentBackground)
-    background-size 20px
-    background-position 0 0
-    background-color $hexPorcelain
 
   &__title
     absolute(50%, 0, null, 0)
@@ -84,11 +81,11 @@
     flex-wrap wrap
 
   &__chars-item
-    font-size 16px
-    flex 0 0 528px
+    font-size 1.5rem
+    flex 0 0 2.1em
     margin 0 -1px -1px 0
     padding $paddingNormal
     border $borderDefault
     text-align center
-    line-height 20.8em
+    line-height 1.3em
     vertical-align baseline
