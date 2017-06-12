@@ -1,7 +1,7 @@
 .dsc-card
   .dsc-card__head
     .dsc-grid.dsc-grid--center.dsc-grid--space-between
-      .dsc-grid__item  {{file.title}}
+      .dsc-grid__item.dsc-grid__item--grow  {{file.title}}
       .dsc-grid__item
         .dsc-grid.dsc-grid--center
 
@@ -25,10 +25,7 @@
             :class="{'dsc-button--selected': sourceType === 'schema' }")
               | SCHEMA
 
-
-          .dsc-grid__item
-            |
-            |
+          .dsc-grid__item.dsc-grid__item--padding
             a.dsc-button.dsc-button--plain.dsc-button--small(
             :href="file.fileUrl",
             target="file.fileUrl")

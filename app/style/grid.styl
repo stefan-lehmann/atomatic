@@ -36,7 +36,8 @@
     margin-right @margin-left
 
     .grid__item
-      padding @margin-left * -1
+      padding-left @margin-left * -1
+      padding-right @padding-left
 
   &&--cards
     @extend .grid.grid--equal-height
@@ -79,8 +80,10 @@
             flex-basis (100%/num)
     &&--auto
       flex-basis 0
+
     &&--1-1
       flex-basis 100%
+
     &&--1-2
       flex-basis (100%/2)
 
@@ -125,3 +128,13 @@
 
     &&--shrink
       flex-shrink 2
+
+    &&--padding
+      padding-left $paddingSmall
+      padding-right @padding-left
+
+      &:first-child
+        padding-left 0
+
+      &:last-child
+        padding-right 0
