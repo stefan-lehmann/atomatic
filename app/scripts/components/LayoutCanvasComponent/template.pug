@@ -9,6 +9,7 @@
       component-card(v-for="(file, index) in files",
       :file="file",
       :index="index",
+      :key="file.fileUrl",
       :modifierClass="modifierClass")
 
   iframe.dsc-main-iframe(
