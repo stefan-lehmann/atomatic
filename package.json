@@ -1,7 +1,7 @@
 {
   "name": "atomatic",
   "description": "An easy to use build and development tool for Atomic Design Systems, that works with Webpack and Gulp.",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "license": "MIT",
   "url": "https://github.com/stefan-lehmann/atomatic",
   "main": "./index.js",
