@@ -1,3 +1,5 @@
+import Vue from 'vue/dist/vue';
+
 class StructureService {
 
   constructor(data) {
@@ -15,58 +17,62 @@ class StructureService {
     files
       .sort(self.sortByOrderValue)
       .map((file, index) => {
-      const
-        splittedPath = file.path.split('/'),
-        hasSiblings = self.hasSiblings(file, index, files);
+        const
+          splittedPath = file.path.split('/'),
+          hasSiblings = self.hasSiblings(file, index, files);
 
-      splittedPath
-        .slice(0, maxLevel)
-        .reduce((current, name, index, array) => {
-          const
-            {urls: currentUrls = []} = current,
-            index1 = index + 1,
-            lastIndex = index1 === array.length,
-            getItemFunction = lastIndex ? this.getRealItem : this.getVirtualItem,
-            pathFragments = index1 === maxLevel ? splittedPath : splittedPath.slice(0, index1),
-            itemPath = pathFragments.join('/'),
-            url = [basePath, itemPath].filter(item => item).join('/'),
-            redundantIndex = currentUrls.findIndex((item) => item.url === url);
+        splittedPath
+          .slice(0, maxLevel)
+          .reduce((current, name, index, array) => {
+            const
+              {urls: currentUrls = []} = current,
+              index1 = index + 1,
+              lastIndex = index1 === array.length,
+              getItemFunction = lastIndex ? this.getRealItem : this.getVirtualItem,
+              pathFragments = index1 === maxLevel ? splittedPath : splittedPath.slice(0, index1),
+              itemPath = pathFragments.join('/'),
+              url = [basePath, itemPath].filter(item => item).join('/'),
+              redundantIndex = currentUrls.findIndex((item) => item.url === url);
 
-          if (!lastIndex && redundantIndex > -1) {
-            return current.urls[redundantIndex];
-          }
-
-          const item = getItemFunction({name, url, file, current});
-
-          if (lastIndex && hasSiblings && redundantIndex > -1) {
-            current = current.urls[redundantIndex];
-            current.grouped.push(item);
-            current.grouped.sort(self.sortByOrderValue);
-            return item;
-          }
-          else {
-            urls[url] = item;
-          }
-
-          if (current.urls === undefined) {
-            current.urls = [];
-          }
-
-          current.urls.push(item);
-          current.urls.sort(self.sortByOrderValue);
-
-          if (lastIndex && hasSiblings) {
-            if (item.grouped === undefined) {
-              item.grouped = [];
+            if (!lastIndex && redundantIndex > -1) {
+              return current.urls[redundantIndex];
             }
-            item.grouped.push(item);
-            item.grouped.sort(self.sortByOrderValue);
-          }
 
-          return item;
+            const item = getItemFunction({name, url, file, current});
 
-        }, section);
-    });
+            if (lastIndex && hasSiblings && redundantIndex > -1) {
+              current = current.urls[redundantIndex];
+              current.grouped.push(item);
+              current.grouped.sort(self.sortByOrderValue);
+              return item;
+            }
+            else {
+              urls[url] = item;
+            }
+
+            if (current.urls === undefined) {
+              current.urls = [];
+            }
+
+            current.urls.push(item);
+            current.urls.sort(self.sortByOrderValue);
+
+            if (lastIndex && hasSiblings) {
+              if (item.grouped === undefined) {
+                item.grouped = [Vue.util.extend({}, item)];
+                item.title = self.getTitleFromName(item.name);
+                item.orderValue = item.name;
+              }
+              else {
+                item.grouped.push(Vue.util.extend({}, item));
+                item.grouped.sort(self.sortByOrderValue);
+              }
+            }
+
+            return item;
+
+          }, section);
+      });
   }
 
   getVirtualItem(options) {
