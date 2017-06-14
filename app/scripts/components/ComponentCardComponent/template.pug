@@ -1,23 +1,23 @@
 .dsc-card
   .dsc-card__head
     .dsc-grid.dsc-grid--center.dsc-grid--space-between
-      .dsc-grid__item.dsc-grid__item--grow  {{file.title}}
-      .dsc-grid__item
+      .dsc-grid__item.dsc-grid__item--auto.dsc-grid__item--grow {{file.title}}
+      .dsc-grid__item.dsc-grid__item--auto
         .dsc-grid.dsc-grid--center
 
-          .dsc-grid__item
+          .dsc-grid__item.dsc-grid__item--auto
             button.dsc-button.dsc-button--plain.dsc-button--small(
             @click="setSourceType('source')",
             :class="{'dsc-button--selected': sourceType === 'source' }")
               | HTML
 
-          .dsc-grid__item
+          .dsc-grid__item.dsc-grid__item--auto
             button.dsc-button.dsc-button--plain.dsc-button--small(
             @click="setSourceType('locals')",
             :class="{'dsc-button--selected': sourceType === 'locals' }")
               | DATA
 
-          .dsc-grid__item(
+          .dsc-grid__item.dsc-grid__item--auto(
           v-if="modifierClass === 'components'",
           )
             button.dsc-button.dsc-button--plain.dsc-button--small(
@@ -25,7 +25,7 @@
             :class="{'dsc-button--selected': sourceType === 'schema' }")
               | SCHEMA
 
-          .dsc-grid__item.dsc-grid__item--padding
+          .dsc-grid__item.dsc-grid__item--auto.dsc-grid__item--padding
             a.dsc-button.dsc-button--plain.dsc-button--small(
             :href="file.fileUrl",
             target="file.fileUrl")

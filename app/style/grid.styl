@@ -32,12 +32,10 @@
     flex-wrap wrap
 
   &&--padding
-    margin-left $paddingSmall * -1
-    margin-right @margin-left
+    margin $paddingSmall * -1
 
     .grid__item
-      padding-left @margin-left * -1
-      padding-right @padding-left
+      padding $paddingSmall
 
   &&--cards
     @extend .grid.grid--equal-height
@@ -78,6 +76,8 @@
           &
           & ~ .grid__item
             flex-basis (100%/num)
+
+
     &&--auto
       flex-basis 0
 
