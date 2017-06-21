@@ -37,7 +37,7 @@ $ npm install atomatic -s
 ## Usage
 
 ```javascript
-const Atomatic = require('../../atomatic');
+const Atomatic = require('atomatic');
 
 new Atomatic(config[, watch[, callback]]);
 ```
