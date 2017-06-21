@@ -20,10 +20,10 @@ prevent yourself from unnecessary code duplication and circumvention of your sty
 
 In order get a better idea of options and capabilities we created a couple of demo projects:
 
-Gulp stack with Pug
-Gulp stack with Twig
-Gulp stack with liquid
-Webpack stack with Twig
+Gulp stack with Pug _(comming soon)_   
+Gulp stack with Twig _(comming soon)_  
+Gulp stack with Liquid _(comming soon)_   
+Webpack stack with Twig _(comming soon)_  
 
 ## Installation
 
