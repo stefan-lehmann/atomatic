@@ -1,16 +1,11 @@
 # Atomatic
 
-Atomatic helps you and your team to automate frontend development based on Atomic Design principles.
- 
-Atomatic takes over the whole process of watching and updating the style guide, while you and your team can 
-concentrate on important things as growing your component library by writing new components. 
+Atomatic is a flexible and easy to use build and development tool for Atomic Design systems, that enables you and your team to concentrate on 
+what really matters, growing and improving your component library. Therefor it takes over the whole process of watching and updating the style 
+guide. Due to it's flexibility and it's file based approach it can be integrated in almost any modern development stack with ease. And since 
+Atomatic isn't bound to a specific templating language your style guide and production environment can share their source files in order to 
+prevent yourself from unnecessary code duplication and circumvention of your style guide.
 
-Because Atomatic isn't bound to a specific templating language your style guide and production environment can easily 
-share source files. Which is the only way to prevent yourself from unnecessary code duplication and circumvention of the 
-style guide.
-
-
-Due to it's flexibility it can be integrated in almost any modern development stack. 
 
 ## Features
 

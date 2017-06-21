@@ -15,7 +15,7 @@ const
   Watcher = require('./lib/Watcher'),
   ConfigManager = require('./lib/ConfigManager');
 
-class DesignSystemCreator {
+class AtomaticCore {
 
   constructor(config, watch, cb) {
 
@@ -118,9 +118,9 @@ class DesignSystemCreator {
       .generateViewerStyles()
       .copyViewerAssets()
       .generateViewerPages()
-      .renderCollected()
       .saveCollectedData()
+      .renderCollected();
   }
 
 }
-module.exports = DesignSystemCreator;
+module.exports = AtomaticCore;
