@@ -6,7 +6,6 @@
   "dataExt": "json5",
   "markdownExt": "md",
   "defaultDataFileName": "data",
-  "dumpData": true,
   "sections": [
     {
       "title": "Style",
@@ -48,13 +47,7 @@
       "source": "templates",
       "generator": "templates"
     }
-//    {
-//      "title": "aaaaa",
-//      "path": "pages",
-//      "generator": "pages"
-//    }
   ],
-  "logLevel": 2,
   "app": {
     "viewerRootPath": "styleguide",
     "globals": {
@@ -68,5 +61,7 @@
     "server": {
     },
     "https": true
-  }
+  },
+  "dumpData": false,
+  "logLevel": 2
 }
