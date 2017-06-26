@@ -66,8 +66,8 @@ _file extension of markdown files (for documentation purposes)_
 _file extension of data files_
 - **defaultDataFileName (default: 'data')**    
 _name of the default data files, which act as fallback in case there is no specific data file that matches the name of the template file_
-- **sections (type: Object)**  
-_enables the Atomatic collectors with a distinct configuration for each of them (see [Sections config](#sections-config))_
+- **sections (default: see [Sections config](#sections-config))**  
+_enables the different Atomatic collectors with a distinct configuration for each of them_
 - **app (type: Object)**  
 _configuration of the viewer app_
 - **server (type: Object)**  
