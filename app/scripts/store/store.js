@@ -16,7 +16,7 @@ const store = new Vuex.Store({
     deserialize: CircularJSON.parse,
     initialState: {
       url: '',
-      generatorClass: '',
+      collectorClass: '',
       fullscreen: false,
       sections: [],
       menuItemActiveStates: {},

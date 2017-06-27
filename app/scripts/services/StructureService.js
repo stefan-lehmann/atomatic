@@ -78,12 +78,12 @@ class StructureService {
   getVirtualItem(options) {
     const
       {name, url, file} = options,
-      {path, ext, generator} = file;
+      {path, ext, collector} = file;
 
     return {
       name,
       url,
-      generator,
+      collector,
       filename: `index.${ext}`,
       title: self.getTitleFromName(name),
       orderValue: path
@@ -93,14 +93,14 @@ class StructureService {
   getRealItem(options) {
     const
       {name, url, file, current} = options,
-      {url: fileUrl, title, path, orderValue, generator, asyncContentUrls} = file,
+      {url: fileUrl, title, path, orderValue, collector, asyncContentUrls} = file,
       {title: pageTitle} = current;
     return {
       name,
       url,
       fileUrl,
       asyncContentUrls,
-      generator,
+      collector,
       title,
       pageTitle,
       orderValue: orderValue || path

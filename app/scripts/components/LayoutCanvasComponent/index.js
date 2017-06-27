@@ -32,8 +32,8 @@ class LayoutCanvasComponent extends VueComponent {
   }
 
   get modifierClass() {
-    const {generator = ''} = this.$store.getters.currentSections;
-    return generator;
+    const {collector = ''} = this.$store.getters.currentSections;
+    return collector;
   }
 }
 

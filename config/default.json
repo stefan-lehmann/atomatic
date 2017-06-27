@@ -10,7 +10,7 @@
     {
       "title": "Style",
       "source": "style",
-      "generator": "style",
+      "collector": "style",
       "generatedViewerCssFile": "generated.css",
       "cssPreprocessorVars": {
         "filename": "source/css/variables.json",
@@ -21,12 +21,12 @@
     {
       "title": "Icons",
       "source": "icons",
-      "generator": "icons"
+      "collector": "icons"
     },
     {
       "title": "Patterns",
       "source": "patterns",
-      "generator": "patterns",
+      "collector": "patterns",
       "cssSource": "public/css/*.css",
       "bemPattern": "[block]__[element]--[modifier]",
       "modifierDelimiter": ["{{", "}}"],
@@ -35,17 +35,22 @@
     {
       "title": "Atoms",
       "source": "components/atoms",
-      "generator": "components"
+      "collector": "components"
     },
     {
       "title": "Molecules",
       "source": "components/molecules",
-      "generator": "components"
+      "collector": "components"
+    },
+    {
+      "title": "Organisms",
+      "source": "components/organisms",
+      "collector": "components"
     },
     {
       "title": "Templates",
       "source": "templates",
-      "generator": "templates"
+      "collector": "templates"
     }
   ],
   "app": {
