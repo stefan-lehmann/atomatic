@@ -77,10 +77,6 @@ _tells Atomatic to dump generated data to the file system in order to simplify d
 - **logLevel (default: 2)**     
 _sets the level of verbosity_
 
-## Sections config
-
-
-## Templating
 # License
 
 All files are released under the [MIT license](https://raw.githubusercontent.com/stefan-lehmann/atomatic/master/LICENSE.md).
