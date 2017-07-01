@@ -40,14 +40,10 @@ $ npm install atomatic -s
 Atomatic is shipped with a [default configuration](https://github.com/stefan-lehmann/atomatic/blob/master/config/default.json), that can be overridden easily in order to adapt the setup to the requirements of your project. Adaption just need to be passed in on instantiation of Atomatic.
 
 ```javascript
-
 const config = {
   /* CONFIGURATION OBJECT THAT OVERRIDES DEFAULT CONFIG */
 };
-
 const Atomatic = require('atomatic');     
-
-
 new Atomatic(config[, watch[, callback]]);
 ```
 ### Options

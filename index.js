@@ -1,6 +1,6 @@
 const
   AppBuilder = require('./lib/AppBuilder'),
-  RecursiveDataLoader = require('./lib/dataLoader/RecursiveDataLoader'),
+  FakeDataLoader = require('./lib/dataLoader/FakeDataLoader'),
   StylesDataLoader = require('./lib/dataLoader/StylesDataLoader'),
   PatternDataLoader = require('./lib/dataLoader/PatternDataLoader'),
   TemplateEngine = require('./lib/TemplateEngine'),
@@ -97,7 +97,7 @@ class AtomaticCore {
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
-      DataLoader: RecursiveDataLoader
+      DataLoader: FakeDataLoader
     }).collectMatchingSections(ConfigManager.get('sections'), 'components');
 
     new TemplateCollector({
@@ -105,7 +105,7 @@ class AtomaticCore {
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
-      DataLoader: RecursiveDataLoader
+      DataLoader: FakeDataLoader
     }).collectMatchingSections(ConfigManager.get('sections'), 'templates');
 
     return this;
