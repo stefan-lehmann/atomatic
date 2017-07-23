@@ -17,60 +17,38 @@ const
 
 class AtomaticCore {
 
-  constructor(config, watch, cb) {
+  create(config) {
 
-    ConfigManager.initConfig(config);
+    this.create = () => this;
+
+    this.conf = ConfigManager.initConfig(config);;
 
     this.TemplateEngine = new TemplateEngine(
-      ConfigManager.get('baseDir'));
+      this.conf.get('baseDir')
+    );
 
     this.CollectorStore = new CollectorStore({
-      conf: ConfigManager,
+      conf: this.conf,
       TemplateEngine: this.TemplateEngine
     });
 
     this.CollectorPaths = new CollectorPaths({
-      conf: ConfigManager
+      conf: this.conf
     });
 
-    if (watch) {
-      this.server = new DevServer({
-        conf: ConfigManager,
-        CollectorStore: this.CollectorStore
-      });
-      this.server.start(cb);
+    this.collect();
 
-      this.Watcher = new Watcher({
-        conf: ConfigManager,
-        CollectorStore: this.CollectorStore,
-        browserSync: this.server.browserSync
-      });
-    }
-
-    this
-      .collect(ConfigManager)
-      .buildApp(ConfigManager)
-      .onEndAll(() => {
-        if (!watch && typeof cb === 'function') {
-          this.TemplateEngine.kill();
-          cb();
-        }
-      });
-
-    if (watch) {
-      this.Watcher.start();
-      this.server.addRoutes();
-    }
+    return this;
   }
 
   getConfig(key, defaultValue) {
-    return ConfigManager.get(key, defaultValue);
+    return this.conf.get(key, defaultValue);
   }
 
-  collect(ConfigManager) {
+  collect() {
 
     new StyleCollector({
-      conf: ConfigManager,
+      conf: this.conf,
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
@@ -78,14 +56,14 @@ class AtomaticCore {
     }).collectMatchingSections(ConfigManager.get('sections'), 'style');
 
     new IconCollector({
-      conf: ConfigManager,
+      conf: this.conf,
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths
     }).collectMatchingSections(ConfigManager.get('sections'), 'icons');
 
     new PatternCollector({
-      conf: ConfigManager,
+      conf: this.conf,
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
@@ -93,7 +71,7 @@ class AtomaticCore {
     }).collectMatchingSections(ConfigManager.get('sections'), 'patterns');
 
     new ComponentCollector({
-      conf: ConfigManager,
+      conf: this.conf,
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
@@ -101,7 +79,7 @@ class AtomaticCore {
     }).collectMatchingSections(ConfigManager.get('sections'), 'components');
 
     new TemplateCollector({
-      conf: ConfigManager,
+      conf: this.conf,
       CollectorStore: this.CollectorStore,
       TemplateEngine: this.TemplateEngine,
       CollectorPaths: this.CollectorPaths,
@@ -111,16 +89,60 @@ class AtomaticCore {
     return this;
   }
 
-  buildApp(ConfigManager, cb) {
-
-    return new AppBuilder(ConfigManager, this.CollectorStore, this.Watcher)
+  buildViewer(browserSync = null) {
+    return new AppBuilder(this.conf, this.CollectorStore, browserSync)
       .browserifyViewerScripts()
       .generateViewerStyles()
       .copyViewerAssets()
-      .generateViewerPages()
-      .saveCollectedData()
-      .renderCollected();
+      .generateViewerPages();
   }
 
+  build() {
+
+    this.onEnd = this
+      .buildViewer()
+      .saveCollectedData()
+      .renderCollected()
+      .onEndAll;
+
+    return this;
+  }
+
+  watch() {
+
+    const server = new DevServer({
+      conf: this.conf,
+      CollectorStore: this.CollectorStore
+    }).start();
+
+    const watcher = new Watcher({
+      conf: this.conf,
+      CollectorStore: this.CollectorStore,
+      browserSync: server.browserSync
+    });
+
+    this
+      .buildViewer(watcher)
+      .saveCollectedData();
+
+    watcher.start();
+    server.addRoutes();
+  }
+
+  kill() {
+    this.TemplateEngine.kill();
+  }
+
+  getCollectedFiles() {
+    return this.CollectorStore.getFiles();
+  }
+
+  compileFile(filename) {
+    const {render:{source}} = this.CollectorStore.getFiles().get(filename);
+    return source;
+  }
 }
-module.exports = AtomaticCore;
+
+const Atomatic = new AtomaticCore();
+
+module.exports = Atomatic;
