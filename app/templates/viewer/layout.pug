@@ -7,6 +7,14 @@ html(class="dsc-html-" + collector)
     meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
     title= pageTitle
 
+    script(type="text/javascript").
+      window.atomatic = {
+        packageName: '#{global.packageName}',
+        packageVersion: '#{global.packageVersion}',
+        collector: '#{collector}'
+
+      };
+
     block appStyles
 
       include inlineFonts
