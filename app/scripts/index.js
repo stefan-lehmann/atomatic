@@ -1,4 +1,4 @@
-import Vue from 'vue/dist/vue';
+import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VueHighlightJS from 'vue-highlightjs';
 

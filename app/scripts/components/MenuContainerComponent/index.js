@@ -8,6 +8,9 @@ class MenuContainerComponent extends VueComponent {
 
   beforeCreate() {
     this.$store.dispatch('fetchSections');
+    if (window.___browserSync___) {
+      ___browserSync___.socket.on('atomatic:files-changed', () => this.$store.dispatch('fetchSections'));
+    }
   }
 
   data() {

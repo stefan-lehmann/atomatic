@@ -13,7 +13,7 @@ li.dsc-nav__list-item(v-if="isParentItem()")
   )
 
 li.dsc-nav__list-item(v-else)
-  span(
+  a(:href="'#'+getResolvedUrl()",
   @click="setUrl()",
   :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__list-item--active' : '', current ? 'dsc-nav__link--current' : '']"
   ) {{ item.title }}

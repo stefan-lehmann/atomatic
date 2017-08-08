@@ -26,11 +26,7 @@ class MenuListItemComponent extends VueComponent {
   }
 
   setUrl() {
-    const
-      {urls = [], url: baseUrl} = this.item,
-      [resolved = {url: baseUrl}] = urls;
-
-    this.$store.dispatch('setUrl', resolved.url);
+    this.$store.dispatch('setUrl', this.getResolvedUrl());
   }
 
   isParentItem() {
@@ -47,6 +43,14 @@ class MenuListItemComponent extends VueComponent {
       }
     }
     return true;
+  }
+
+  getResolvedUrl() {
+    const
+      {item: {urls = [], url: baseUrl}} = this,
+      [url] = urls;
+
+    return url && url.url ? url.url : url || baseUrl;
   }
 
   get activeState() {
