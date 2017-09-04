@@ -14,8 +14,7 @@
     "name": "Stefan Lehmann"
   },
   "engines": {
-    "node": ">= 7.5.0",
-    "yarn": "^0.18.0"
+    "node": ">= 7.5.0"
   },
   "bugs": {
     "url": "https://github.com/stefan-lehmann/atomatic/issues"
