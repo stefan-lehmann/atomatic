@@ -4,7 +4,7 @@ li.dsc-nav__list-item(v-if="isParentItem()")
   :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__link--active' : '', current ? 'dsc-nav__link--current' : '']"
   ) {{ item.title }}
     span.dsc-nav__link-icon
-      include ../../../images/svg/angle-down.svg
+      include ../../../svg/angle-down.svg
 
   menu-list(
   v-if="activeState === true",
