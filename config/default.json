@@ -1,6 +1,7 @@
 {
   "baseDir": "source/styleguide",
   "dest": "public",
+  "templateDest": "templates",
   "templateExt": "pug",
   "htmlExt": "html",
   "dataExt": "json5",
@@ -29,8 +30,7 @@
       "collector": "patterns",
       "cssSource": "public/css/*.css",
       "bemPattern": "[block]__[element]--[modifier]",
-      "modifierDelimiter": ["{{", "}}"],
-      "warnOnMissingDataFile": false
+      "modifierDelimiter": ["{{", "}}"]
     },
     {
       "title": "Atoms",
