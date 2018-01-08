@@ -1,27 +1,29 @@
-import VueComponent from '../../services/VueComponent';
+import VueComponent from '../../vue/VueComponent';
 
-const props = {
-  props: {
-    file: {
-      type: Object,
-      required: true,
-    },
-    modifierClass: {
-      type: String,
-      required: true,
-      default: ''
-    },
-
-  },
-  watch: {
-    '$store.state.url': {
-      handler: 'onUrlChange'
-    }
-  },
-  template: require('./template.pug')({})
-};
 
 class ComponentCardComponent extends VueComponent {
+
+  props() {
+    return {
+      props: {
+        file: {
+          type: Object,
+          required: true,
+        },
+        modifierClass: {
+          type: String,
+          required: true,
+          default: ''
+        },
+      },
+      watch: {
+        '$store.state.url': {
+          handler: 'onUrlChange'
+        }
+      },
+      template: require('./template.pug')({})
+    };
+  }
 
   onUrlChange() {
     this.setSourceType();
@@ -44,7 +46,7 @@ class ComponentCardComponent extends VueComponent {
   }
 
   get language() {
-    switch(this.sourceType) {
+    switch (this.sourceType) {
       case 'source':
         return 'html';
       case 'schema':
@@ -52,7 +54,7 @@ class ComponentCardComponent extends VueComponent {
         return 'json';
       default:
         return '';
-    };
+    }
   }
 
   get sourceCode() {
@@ -62,10 +64,8 @@ class ComponentCardComponent extends VueComponent {
       return this.language === 'json' ? JSON.stringify(sourceCodes[this.sourceType], null, 2) : sourceCodes[this.sourceType];
     }
   }
-
-
 }
 
-VueComponent.register(ComponentCardComponent, props);
+ComponentCardComponent.register('component-card', ComponentCardComponent);
 
-
+export default ComponentCardComponent;

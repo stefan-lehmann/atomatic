@@ -1,25 +1,27 @@
-import VueComponent from '../../services/VueComponent';
-
-const props = {
-  props: {
-    url: {
-      type: String
-    },
-    modifierClass: {
-      type: String,
-      required: true,
-      default: ''
-    }
-  },
-  watch: {
-    url: {
-      handler: 'onUrlChange'
-    }
-  },
-  template: require('./template.pug')({})
-};
+import VueComponent from '../../vue/VueComponent';
 
 class SelfAdjustingIframeComponent extends VueComponent {
+
+  props() {
+    return {
+      props: {
+        url: {
+          type: String
+        },
+        modifierClass: {
+          type: String,
+          required: true,
+          default: ''
+        }
+      },
+      watch: {
+        url: {
+          handler: 'onUrlChange'
+        }
+      },
+      template: require('./template.pug')({})
+    };
+  }
 
   onUrlChange() {
     const {[this.url]: {height = 0} = {height: 0}} = this.$store.getters.iframeStates;
@@ -47,6 +49,9 @@ class SelfAdjustingIframeComponent extends VueComponent {
       this.setHeight(height);
     }
     setTimeout(this.updateHeight, 100);
+    setTimeout(this.updateHeight, 500);
+    setTimeout(this.updateHeight, 1000);
+    setTimeout(this.updateHeight, 2000);
   }
 
   setHeight(height = 0) {
@@ -61,9 +66,10 @@ class SelfAdjustingIframeComponent extends VueComponent {
       .sort((a, b) => a > b)
       .shift();
   }
-
 }
 
-VueComponent.register(SelfAdjustingIframeComponent, props);
+SelfAdjustingIframeComponent.register('self-adjusting-iframe', SelfAdjustingIframeComponent);
+
+export default SelfAdjustingIframeComponent;
 
 

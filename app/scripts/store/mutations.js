@@ -4,6 +4,10 @@ const mutations = {
 
   setSections: (state, sections) => state.sections = sections,
   setUrls: (state, urls) => state.urls = urls,
+  reloadUrls: (state, urls) => {
+    console.warn('%cAtomatic reload:', 'font-weight:bold', 'triggered');
+    state.reloadUrls = urls
+  },
 
   toggleFullscreen: (state) => {
     state.fullscreen = !state.fullscreen;

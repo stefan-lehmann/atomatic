@@ -1,24 +1,26 @@
-import VueComponent from '../../services/VueComponent';
-
-const props = {
-  props: {
-    item: {
-      type: Object,
-      required: true
-    },
-    level: {
-      type: Number,
-      required: true,
-      default: 0
-    }
-  },
-  template: require('./template.pug')({})
-};
+import VueComponent from '../../vue/VueComponent';
 
 class MenuListItemComponent extends VueComponent {
 
+  props() {
+    return {
+      props: {
+        item: {
+          type: Object,
+          required: true
+        },
+        level: {
+          type: Number,
+          required: true,
+          default: 0
+        }
+      },
+      template: require('./template.pug')({})
+    };
+  }
+
   data(){
-    return {}
+    return {};
   }
 
   toggle() {
@@ -62,4 +64,6 @@ class MenuListItemComponent extends VueComponent {
   }
 }
 
-VueComponent.register(MenuListItemComponent, props);
+MenuListItemComponent.register('menu-list-item', MenuListItemComponent);
+
+export default MenuListItemComponent;

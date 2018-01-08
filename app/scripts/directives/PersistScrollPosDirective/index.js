@@ -1,8 +1,8 @@
-import VueDirective from '../../services/VueDirective';
+import VueDirective from '../../vue/VueDirective';
 
 class PersistScrollPosDirective extends VueDirective {
 
-  inserted(el, binding) {
+  bind(el, binding) {
     const
       {$store} = this,
       {value: id = 'test'} = binding;
@@ -21,6 +21,6 @@ class PersistScrollPosDirective extends VueDirective {
 
 }
 
-VueDirective.register(PersistScrollPosDirective);
+PersistScrollPosDirective.register('persist-scroll-pos', PersistScrollPosDirective);
 
-
+export default PersistScrollPosDirective;

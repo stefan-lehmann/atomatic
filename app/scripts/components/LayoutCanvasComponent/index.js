@@ -1,10 +1,20 @@
-import VueComponent from '../../services/VueComponent';
-
-const props = {
-  template: require('./template.pug')({})
-};
+import VueComponent from '../../vue/VueComponent';
 
 class LayoutCanvasComponent extends VueComponent {
+
+  props() {
+    return {
+      template: require('./template.pug')({})
+    };
+  }
+
+  beforeCreate() {
+    if (window.___browserSync___) {
+      ___browserSync___.socket.on('atomatic:reload', (affectedUrls) => {
+        this.$store.commit('reloadUrls', affectedUrls);
+      });
+    }
+  }
 
   mounted() {
     this.useLocationHashAsUrl();
@@ -12,7 +22,7 @@ class LayoutCanvasComponent extends VueComponent {
 
   useLocationHashAsUrl() {
     let {hash = ''} = window.location;
-    hash = hash.replace(/#/,'');
+    hash = hash.replace(/#/, '');
     if (hash !== this.$store.getters.url) {
       this.$store.commit('setUrl', hash);
     }
@@ -37,6 +47,8 @@ class LayoutCanvasComponent extends VueComponent {
   }
 }
 
-VueComponent.register(LayoutCanvasComponent, props);
+LayoutCanvasComponent.register('layout-canvas', LayoutCanvasComponent);
+
+export default LayoutCanvasComponent;
 
 

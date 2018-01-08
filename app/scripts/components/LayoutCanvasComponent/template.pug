@@ -13,6 +13,7 @@
       :modifierClass="modifierClass")
 
   iframe.dsc-main-iframe(
-  v-else,
+  v-else=true,
+  v-browsersync-reload="",
   :src="files[0].fileUrl",
   :class="'dsc-main-iframe--'+modifierClass")

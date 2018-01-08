@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import decamelize from 'decamelize';
 
 const internalHooks = [
     'bind',
@@ -9,13 +8,15 @@ const internalHooks = [
     'unbind'
   ],
   reservedProperties = [
-    'constructor'
+    'constructor',
+    'el',
+    'vm',
+    'expression'
   ];
 
 class VueDirective {
 
   constructor(options = {}) {
-
     const
       proto = Object.getPrototypeOf(this),
       {name = this.constructor.name} = options;
@@ -27,41 +28,40 @@ class VueDirective {
       .filter(propertyName => reservedProperties.indexOf(propertyName) === -1)
       .map(propertyName => {
 
-        const
-          {value} = Object.getOwnPropertyDescriptor(proto, propertyName);
+        const {value} = Object.getOwnPropertyDescriptor(proto, propertyName) || {};
 
         if (internalHooks.indexOf(propertyName) !== -1) {
           this.options[propertyName] = (...attrs) => {
-            this.super.apply(this.options, attrs);
-            this[propertyName].apply(this.options, attrs);
+            this[propertyName].apply(Object.assign({}, this.options, this.super.apply(this.options, attrs)), attrs);
           };
           return;
         }
 
         if (typeof value === 'function') {
-          this.options[propertyName] = this[propertyName];
+          this.options[propertyName] = value;
         }
       });
 
     return this.options;
   }
 
-  super(...attrs) {
-    if (!this.$store) {
-      this.$store = attrs[2].context.$store;
-    }
+  static register(name, directiveClass) {
+    Vue.directive(name, new directiveClass({name}));
   }
 
-  static register(...attrs) {
+  super(...attrs) {
     const
-      directive = new attrs[0](),
-      [name] = decamelize(directive.name, '-').split('-directive');
+      [$el, , vm] = attrs,
+      {context: {$store}} = vm;
 
-    Vue.directive(name, directive);
+    return {
+      $el,
+      vm,
+      $store,
+      context: {},
+      nextTick: Vue.nextTick
+    }
   }
 }
 
 export default VueDirective;
-
-
-

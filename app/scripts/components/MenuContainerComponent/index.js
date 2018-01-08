@@ -1,10 +1,12 @@
-import VueComponent from '../../services/VueComponent';
-
-const props = {
-  template: require('./template.pug')({})
-};
+import VueComponent from '../../vue/VueComponent';
 
 class MenuContainerComponent extends VueComponent {
+
+  props() {
+    return {
+      template: require('./template.pug')({})
+    };
+  }
 
   beforeCreate() {
     this.$store.dispatch('fetchSections');
@@ -25,6 +27,7 @@ class MenuContainerComponent extends VueComponent {
   }
 }
 
-VueComponent.register(MenuContainerComponent, props);
+MenuContainerComponent.register('menu-container', MenuContainerComponent);
 
+export default MenuContainerComponent;
 

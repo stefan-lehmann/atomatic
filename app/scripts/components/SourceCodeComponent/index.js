@@ -1,31 +1,34 @@
-import VueComponent from '../../services/VueComponent';
+import VueComponent from '../../vue/VueComponent';
 
-const props = {
-  props: {
-    sourceCode: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    language: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    title: {
-      type: String,
-      default: ''
-    }
-  },
-
-  template: require('./template.pug')({})
-};
 
 class SourceCodeComponent extends VueComponent {
 
+  props() {
+    return {
+      props: {
+        sourceCode: {
+          type: String,
+          required: true,
+          default: ''
+        },
+        language: {
+          type: String,
+          required: true,
+          default: ''
+        },
+        title: {
+          type: String,
+          default: ''
+        }
+      },
 
+      template: require('./template.pug')({})
+    };
+  }
 }
 
-VueComponent.register(SourceCodeComponent, props);
+SourceCodeComponent.register('source-code', SourceCodeComponent);
+
+export default SourceCodeComponent;
 
 

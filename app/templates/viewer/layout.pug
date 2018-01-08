@@ -30,29 +30,6 @@ html(class="dsc-html-" + collector)
     block globalScripts
       if global && global.jsFiles
         for src in global.jsFiles
-          script(src=src, type="text/javascript")
-
-    script.
-      (function () {
-
-        let listeningToBrowserSync = false;
-
-        function listenToBrowserSync() {
-          if (window.___browserSync___ && !listeningToBrowserSync) {
-            ___browserSync___.socket.on('atomatic:reload', function () {
-              console.warn('%cAtomatic reloading:', 'font-weight:bold', document.title, '\n' + window.location.href);
-              window.location.reload();
-            });
-            listeningToBrowserSync = true;
-          }
-        }
-
-        function delayedListenToBrowserSync() {
-          setTimeout(listenToBrowserSync, 1000);
-        }
-
-        document.addEventListener('load', delayedListenToBrowserSync);
-        document.addEventListener('DOMContentLoaded', delayedListenToBrowserSync);
-      })();
+          script(src=src)
 
   block body

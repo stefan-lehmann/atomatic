@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import decamelize from 'decamelize';
 
 const internalHooks = [
     'data',
@@ -17,18 +16,19 @@ const internalHooks = [
   ],
   reservedProperties = [
     'constructor',
-    'template'
+    'template',
+    'props',
+    'nextTick'
   ];
 
 class VueComponent {
 
-  constructor(options = {}) {
+  constructor(options) {
 
     const
       proto = Object.getPrototypeOf(this),
-      {name = this.constructor.name} = options;
+      {name = this.constructor.name} = this.options = Object.assign({}, options, this.props());
 
-    this.options = options;
     this.options.name = name;
 
     Object.getOwnPropertyNames(proto)
@@ -36,8 +36,8 @@ class VueComponent {
       .map(propertyName => {
 
         const
-          {value, get, set} = Object.getOwnPropertyDescriptor(proto, propertyName),
-          {methods = {}, computed = {}} = this.options;
+          {value, get, set} = Object.getOwnPropertyDescriptor(proto, propertyName) || {},
+          {methods = {nextTick: Vue.nextTick}, computed = {}} = this.options;
 
         if (internalHooks.indexOf(propertyName) !== -1) {
           this.options[propertyName] = this[propertyName];
@@ -59,12 +59,12 @@ class VueComponent {
     return this.options;
   }
 
-  static register(...attrs) {
-    const
-      component = new attrs[0](attrs[1]),
-      [name] = decamelize(component.name, '-').split('-component');
+  props() {
+    return {};
+  }
 
-    Vue.component(name, component);
+  static register(name, componentClass) {
+    Vue.component(name, new componentClass({name}));
   }
 }
 
