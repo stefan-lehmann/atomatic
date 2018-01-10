@@ -30,6 +30,42 @@ html(class="dsc-html-" + collector)
     block globalScripts
       if global && global.jsFiles
         for src in global.jsFiles
-          script(src=src)
+          script(src=src, type="text/javascript")
+
+    script.
+
+      (function () {
+        function inIframe() {
+          try {
+            return window.self !== window.top;
+          } catch (e) {
+            return true;
+          }
+        }
+
+        function listenToBrowserSync(iteration) {
+
+          if (!iteration) iteration = 0;
+
+          if (window.___browserSync___) {
+            ___browserSync___.socket.on('atomatic:reload', function (affectedUrls) {
+              if (affectedUrls.indexOf(window.location.pathname) !== -1) {
+                console.warn('%cAtomatic reloading:', 'font-weight:bold', document.title, '\n' + window.location.pathname);
+                window.location.reload();
+              }
+            });
+          }
+          else if (iteration < 5) {
+            setTimeout(function () {
+              listenToBrowserSync(iteration++)
+            }, 500);
+          }
+        }
+
+        if (!inIframe()) {
+          document.addEventListener('load', listenToBrowserSync);
+          document.addEventListener('DOMContentLoaded', listenToBrowserSync);
+        }
+      })();
 
   block body
