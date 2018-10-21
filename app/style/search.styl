@@ -1,0 +1,26 @@
+.search
+  padding $paddingNormal $paddingLarge
+  position relative
+
+  &__input
+    display block
+    border-bottom 1px solid $hexSlateGray
+    width 100%
+    padding .25em 1.35em
+
+  .svg-search
+    position absolute
+    width 1.25em
+    height 1.25em
+    left 1em
+    top calc(50% \- .625em)
+    tintSvg($hexSlateGray)
+
+  &__clear
+    position absolute
+    width 1.25em
+    height 1.25em
+    right 1em
+    top calc(50% \- .625em)
+    svg
+      tintSvg($hexAlto)
