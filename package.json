@@ -109,6 +109,6 @@
     "vue-resource": "^1.5.0",
     "vue-template-compiler": "^2.5.16",
     "vuex": "^3.0.1",
-    "vuex-localstorage": "^1.0.0",
+    "vuex-localstorage": "^1.0.0"
   }
 }
