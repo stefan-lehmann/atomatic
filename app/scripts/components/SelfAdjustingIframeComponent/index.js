@@ -1,4 +1,5 @@
 import VueComponent from '../../vue/VueComponent';
+import templateFn from './template.pug';
 
 class SelfAdjustingIframeComponent extends VueComponent {
 
@@ -19,7 +20,7 @@ class SelfAdjustingIframeComponent extends VueComponent {
           handler: 'onUrlChange'
         }
       },
-      template: require('./template.pug')({})
+      template: templateFn({})
     };
   }
 

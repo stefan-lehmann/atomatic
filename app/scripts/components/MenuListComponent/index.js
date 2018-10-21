@@ -1,4 +1,5 @@
 import VueComponent from '../../vue/VueComponent';
+import templateFn from './template.pug';
 
 class MenuListComponent extends VueComponent {
 
@@ -15,7 +16,7 @@ class MenuListComponent extends VueComponent {
           default: 0
         }
       },
-      template: require('./template.pug')({})
+      template: templateFn({})
     };
   }
 }

@@ -1,10 +1,16 @@
 import VueComponent from '../../vue/VueComponent';
+import templateFn from './template.pug';
 
 class MenuContainerComponent extends VueComponent {
 
   props() {
     return {
-      template: require('./template.pug')({})
+      watch: {
+        url: {
+          handler: 'onSearchChange'
+        }
+      },
+      template: templateFn({})
     };
   }
 
@@ -23,7 +29,11 @@ class MenuContainerComponent extends VueComponent {
   }
 
   get sections() {
-    return this.$store.getters.sections;
+    return this.$store.getters.filteredStructure || this.$store.getters.sections;
+  }
+
+  get isFiltered() {
+    return !!this.$store.getters.filteredStructure;
   }
 }
 

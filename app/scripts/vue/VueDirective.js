@@ -15,19 +15,15 @@ const internalHooks = [
   ];
 
 class VueDirective {
-
   constructor(options = {}) {
-    const
-      proto = Object.getPrototypeOf(this),
-      {name = this.constructor.name} = options;
+    const proto = Object.getPrototypeOf(this);
 
     this.options = options;
     this.options.name = name;
 
     Object.getOwnPropertyNames(proto)
       .filter(propertyName => reservedProperties.indexOf(propertyName) === -1)
-      .map(propertyName => {
-
+      .forEach(propertyName => {
         const {value} = Object.getOwnPropertyDescriptor(proto, propertyName) || {};
 
         if (internalHooks.indexOf(propertyName) !== -1) {
@@ -60,7 +56,7 @@ class VueDirective {
       $store,
       context: {},
       nextTick: Vue.nextTick
-    }
+    };
   }
 }
 

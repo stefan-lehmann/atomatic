@@ -21,50 +21,91 @@ const internalHooks = [
     'nextTick'
   ];
 
+let appMethods;
+
+
 class VueComponent {
 
   constructor(options) {
+    const properties = {};
+    let prototype = this;
 
+    while (prototype != null && prototype.constructor.name !== 'VueComponent') {
+      prototype = Object.getPrototypeOf(prototype || this);
+      if (prototype) {
+        Object.getOwnPropertyNames(prototype)
+          .forEach((propertyName) => {
+            if (!properties[propertyName] && reservedProperties.indexOf(propertyName) === -1) {
+              properties[propertyName] = prototype;
+            }
+          });
+      }
+    }
+
+    options = Object.assign({}, options, this.props.call(this));
+
+    Object.entries(properties)
+      .forEach(([propertyName, prototype]) => {
     const
-      proto = Object.getPrototypeOf(this),
-      {name = this.constructor.name} = this.options = Object.assign({}, options, this.props());
-
-    this.options.name = name;
-
-    Object.getOwnPropertyNames(proto)
-      .filter(propertyName => reservedProperties.indexOf(propertyName) === -1)
-      .map(propertyName => {
-
-        const
-          {value, get, set} = Object.getOwnPropertyDescriptor(proto, propertyName) || {},
-          {methods = {nextTick: Vue.nextTick}, computed = {}} = this.options;
+          {value, get, set} = Object.getOwnPropertyDescriptor(prototype, propertyName) || {},
+          {methods = {nextTick: Vue.nextTick}, computed = {}} = options;
 
         if (internalHooks.indexOf(propertyName) !== -1) {
-          this.options[propertyName] = this[propertyName];
+          options = Object.assign(options, {[propertyName]: this[propertyName]});
           return;
         }
 
         if (typeof value === 'function') {
           Object.assign(methods, {[propertyName]: value});
-          this.options.methods = methods;
+          options.methods = methods;
           return;
         }
 
         if (get || set) {
-          Object.assign(computed, {[propertyName]: {get, set}});
-          this.options.computed = computed;
+          Object.assign(computed, {
+            [propertyName]: {
+              get,
+              set
+            }
+          });
+          options.computed = computed;
         }
       });
 
-    return this.options;
+    this.options = options;
+
+    return options;
+  }
+
+  get root() {
+    if (!appMethods) {
+      appMethods = this._getAppMethods(this.$root);
+    }
+    return appMethods;
+  }
+
+  static register(name, ComponentClass) {
+    Vue.component(name, new ComponentClass({name}));
+
+    return name;
   }
 
   props() {
     return {};
   }
 
-  static register(name, componentClass) {
-    Vue.component(name, new componentClass({name}));
+  _getAppMethods(app) {
+    return Object.getOwnPropertyNames(app)
+      .filter((methodName, index, methodsNames) => {
+        return methodsNames.indexOf(methodName) === index
+          && typeof app[methodName] === 'function'
+          && methodName.indexOf('_') !== 0
+          && methodName.indexOf('$') !== 0;
+      })
+      .reduce((carry, name) => {
+        carry[name] = app[name];
+        return carry;
+      }, {});
   }
 }
 

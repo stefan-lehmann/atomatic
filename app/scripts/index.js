@@ -6,8 +6,8 @@ Vue.use(VueResource);
 Vue.use(VueHighlightJS);
 
 import store from './store/store';
-import 'glob:./directives/*';
-import 'glob:./components/*';
+import * as directives from './directives/**/*.js';
+import * as components from './components/**/*.js';
 
 new Vue({
   el: '#viewer',

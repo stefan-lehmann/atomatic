@@ -6,7 +6,7 @@ const mutations = {
   setUrls: (state, urls) => state.urls = urls,
   reloadUrls: (state, urls) => {
     console.warn('%cAtomatic reload:', 'font-weight:bold', 'triggered');
-    state.reloadUrls = urls
+    state.reloadUrls = urls;
   },
 
   toggleFullscreen: (state) => {
@@ -40,7 +40,7 @@ const mutations = {
 
   setComponentSourceCodes: (state, payload) => {
     const
-      {url, sourceType = null, data=''} = payload;
+      {url, sourceType = null, data = ''} = payload;
 
     if (!state.componentSourceCodes[url]) {
       Vue.set(state.componentSourceCodes, [url], {});
@@ -59,6 +59,14 @@ const mutations = {
   setUrl: (state, url) => {
     window.location.hash = url;
     state.url = url;
+  },
+
+  setSearch: (state, search) => {
+    Vue.set(state, 'search', search);
+  },
+
+  setFilteredStructure: (state, structure) => {
+    Vue.set(state, 'filteredStructure', structure);
   }
 };
 

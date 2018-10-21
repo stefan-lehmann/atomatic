@@ -7,6 +7,13 @@
     include ../../../svg/layer-background.svg
     h2 {{ description }}
 
+  .dsc-off-canvas__pre-head
+    .dsc-search
+      input.dsc-search__input(type="search", :value="search", @input="updateSearch")
+      include ../../../svg/search.svg
+      button.dsc-search__clear(v-if="search", @click="clearSearch")
+        include ../../../svg/backspace.svg
+
   .dsc-off-canvas__body(v-persist-scroll-pos="'dsc-off-canvas-body'")
     menu-container
 

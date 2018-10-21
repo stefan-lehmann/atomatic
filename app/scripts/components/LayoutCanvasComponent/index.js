@@ -1,10 +1,10 @@
 import VueComponent from '../../vue/VueComponent';
+import templateFn from './template.pug';
 
 class LayoutCanvasComponent extends VueComponent {
-
   props() {
     return {
-      template: require('./template.pug')({})
+      template: templateFn({})
     };
   }
 

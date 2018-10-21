@@ -25,7 +25,8 @@ const store = new Vuex.Store({
       scrollPos : {},
       componentSourceType: {},
       componentSourceCodes: {},
-      reloadUrls: []
+      reloadUrls: [],
+      filteredStructure: null
     },
     expires: 7 * 24 * 60 * 60 * 1e3
   })],

@@ -1,5 +1,5 @@
 import VueComponent from '../../vue/VueComponent';
-
+import templateFn from './template.pug';
 
 class ComponentCardComponent extends VueComponent {
 
@@ -21,7 +21,7 @@ class ComponentCardComponent extends VueComponent {
           handler: 'onUrlChange'
         }
       },
-      template: require('./template.pug')({})
+      template: templateFn({})
     };
   }
 

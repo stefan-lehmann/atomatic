@@ -1,7 +1,7 @@
 li.dsc-nav__list-item(v-if="isParentItem()")
   span(
   @click="toggle()",
-  :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__link--active' : '', current ? 'dsc-nav__link--current' : '']"
+  :class="classObject"
   ) {{ item.title }}
     span.dsc-nav__link-icon
       include ../../../svg/angle-down.svg
@@ -15,5 +15,5 @@ li.dsc-nav__list-item(v-if="isParentItem()")
 li.dsc-nav__list-item(v-else)
   a(:href="'#'+getResolvedUrl()",
   @click="setUrl()",
-  :class="['dsc-nav__link', 'dsc-nav__link--level'+level, activeState ? 'dsc-nav__list-item--active' : '', current ? 'dsc-nav__link--current' : '']"
+  :class="classObject"
   ) {{ item.title }}

@@ -1,6 +1,25 @@
 import VueComponent from '../../vue/VueComponent';
+import templateFn from './template.pug';
 
 class MenuListItemComponent extends VueComponent {
+
+  get classObject() {
+    return {
+      'dsc-nav__link': true,
+      ['dsc-nav__link--level' + this.level]: true,
+      'dsc-nav__link--filtered': this.filtered,
+      'dsc-nav__link--active': this.activeState,
+      'dsc-nav__link--current': this.current
+    };
+  }
+
+  get activeState() {
+    return this.$store.getters.menuItemActiveStates[this.item.url];
+  }
+
+  get current() {
+    return this.$store.getters.url === this.item.url || this.$store.getters.url === this.item.baseUrl;
+  }
 
   props() {
     return {
@@ -13,14 +32,14 @@ class MenuListItemComponent extends VueComponent {
           type: Number,
           required: true,
           default: 0
+        },
+        filtered: {
+          type: Boolean,
+          default: false
         }
       },
-      template: require('./template.pug')({})
+      template: templateFn({})
     };
-  }
-
-  data(){
-    return {};
   }
 
   toggle() {
@@ -41,7 +60,7 @@ class MenuListItemComponent extends VueComponent {
     if (this.item.urls.length < 2) {
       const [firstChild] = this.item.urls;
       if (!firstChild.urls || firstChild.urls.length === 0) {
-        return false
+        return false;
       }
     }
     return true;
@@ -49,18 +68,9 @@ class MenuListItemComponent extends VueComponent {
 
   getResolvedUrl() {
     const
-      {item: {urls = [], url: baseUrl}} = this,
-      [url] = urls;
+      {item: {baseUrl, urls: [{url = this.item.url}] = [{url: this.item.url}]}} = this;
 
-    return url && url.url ? url.url : url || baseUrl;
-  }
-
-  get activeState() {
-    return this.$store.getters.menuItemActiveStates[this.item.url];
-  }
-
-  get current() {
-    return this.$store.getters.url === this.item.url;
+    return this.filtered ? baseUrl : url;
   }
 }
 

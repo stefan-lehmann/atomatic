@@ -1,5 +1,5 @@
 import VueComponent from '../../vue/VueComponent';
-
+import templateFn from './template.pug';
 
 class SourceCodeComponent extends VueComponent {
 
@@ -21,8 +21,7 @@ class SourceCodeComponent extends VueComponent {
           default: ''
         }
       },
-
-      template: require('./template.pug')({})
+      template: templateFn({})
     };
   }
 }

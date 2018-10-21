@@ -1,5 +1,6 @@
 const getters = {
   sections: (state) => state.sections,
+  filteredStructure: (state) => state.filteredStructure,
 
   currentSections: (state) => {
 
@@ -16,7 +17,8 @@ const getters = {
   componentSourceType: (state) => state.componentSourceType,
   componentSourceCodes: (state) => state.componentSourceCodes,
   scrollPos: (state) => state.scrollPos,
-  iframeStates: (state) => state.iframeStates
+  iframeStates: (state) => state.iframeStates,
+  search: (state) => state.search
 };
 
 export default getters;
