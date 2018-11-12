@@ -1,7 +1,7 @@
 {
   "name": "atomatic",
   "description": "An easy to use build and development tool for Atomic Design Systems, that works with rollup.js, Browserify, webpack and many more...",
-  "version": "0.9.0-rc4",
+  "version": "0.9.1",
   "license": "MIT",
   "url": "https://github.com/stefan-lehmann/atomatic",
   "main": "./index.js",
@@ -109,7 +109,6 @@
     "vue": "^2.5.16",
     "vue-highlightjs": "^1.2.2",
     "vue-resource": "^1.5.0",
-    "vue-template-compiler": "^2.5.16",
     "vuex": "^3.0.1",
     "vuex-localstorage": "^1.0.0"
   }
