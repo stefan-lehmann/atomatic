@@ -25,12 +25,20 @@ class SelfAdjustingIframeComponent extends VueComponent {
     };
   }
 
+  data() {
+    return {
+      timeouts: []
+    };
+  }
+
   mounted() {
     this.onUrlChange();
+    window.addEventListener('resize', this.updateHeight, {passive: false});
   }
 
   beforeDestroy() {
     window.removeEventListener('resize', this.updateHeight);
+    this.clearTimeouts();
   }
 
   getHeightFromChildNodes(document) {
@@ -63,20 +71,22 @@ class SelfAdjustingIframeComponent extends VueComponent {
       let height = this.getHeightFromChildNodes(document) || 200;
 
       if (this.height === height) {
-        this.$store.commit('setIframeState', {
-          url: this.url,
-          height
-        });
-        window.addEventListener('resize', this.updateHeight);
+        this.$store.commit('setIframeState', {url: this.url, height});
         return;
       }
       this.setHeight(height);
     }
 
-    setTimeout(this.updateHeight, 100);
-    setTimeout(this.updateHeight, 500);
-    setTimeout(this.updateHeight, 1000);
-    setTimeout(this.updateHeight, 2000);
+    this.timeouts = [
+      setTimeout(this.updateHeight, 100),
+      setTimeout(this.updateHeight, 500),
+      setTimeout(this.updateHeight, 1000),
+      setTimeout(this.updateHeight, 2000)
+    ];
+  }
+
+  clearTimeouts() {
+    this.timeouts.forEach(clearTimeout);
   }
 }
 
