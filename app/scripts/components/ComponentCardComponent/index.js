@@ -41,6 +41,17 @@ class ComponentCardComponent extends VueComponent {
     }
   }
 
+  getSourceTitle(key) {
+    switch (key) {
+      case 'source':
+        return 'HTML';
+      case 'locals':
+        return 'DATA';
+      default:
+        return key.toUpperCase();
+    }
+  }
+
   get sourceType() {
     return this.$store.getters.componentSourceType[this.file.fileUrl];
   }

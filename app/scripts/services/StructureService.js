@@ -40,7 +40,7 @@ class StructureService {
   generateSectionStructure(urls, section) {
     const
       {maxLevel} = this,
-      {files, url: basePath} = section;
+      {files = [], url: basePath} = section;
 
     files
       .sort(self.sortByOrderValue)
@@ -102,6 +102,7 @@ class StructureService {
             return item;
           }, section);
       });
+
     return urls;
   }
 

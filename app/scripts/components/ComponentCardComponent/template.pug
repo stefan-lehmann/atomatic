@@ -5,27 +5,16 @@
       .dsc-grid__item.dsc-grid__item--auto
         .dsc-grid.dsc-grid--center
 
-          .dsc-grid__item.dsc-grid__item--auto
-            button.dsc-button.dsc-button--plain.dsc-button--small(
-            @click="setSourceType('source')",
-            :class="{'dsc-button--selected': sourceType === 'source' }")
-              | HTML
-
-          .dsc-grid__item.dsc-grid__item--auto
-            button.dsc-button.dsc-button--plain.dsc-button--small(
-            @click="setSourceType('locals')",
-            :class="{'dsc-button--selected': sourceType === 'locals' }")
-              | DATA
-
           .dsc-grid__item.dsc-grid__item--auto(
-          v-if="modifierClass === 'components'",
+          v-for="(value, key) in file.asyncContentUrls"
+          :class="'dsc-grid__item--'+ key"
           )
             button.dsc-button.dsc-button--plain.dsc-button--small(
-            @click="setSourceType('schema')",
-            :class="{'dsc-button--selected': sourceType === 'schema' }")
-              | SCHEMA
+            @click="setSourceType(key)",
+            :class="{'dsc-button--selected': sourceType === key}")
+              | {{ getSourceTitle(key) }}
 
-          .dsc-grid__item.dsc-grid__item--auto.dsc-grid__item--padding
+          .dsc-grid__item.dsc-grid__item--auto.dsc-grid__item--padding.dsc-grid__item--link
             a.dsc-button.dsc-button--plain.dsc-button--small(
             :href="file.fileUrl",
             target="file.fileUrl")
