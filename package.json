@@ -84,7 +84,7 @@
     "json-schema-faker": "~0.5.0-rc9",
     "json5": "^2.1.0",
     "jsonpath": "^1.0.0",
-    "marked": "^0.6.0",
+    "marked": "^1.1.1",
     "mathjs": "^5.4.2",
     "mime": "^2.2.0",
     "minimatch": "^3.0.4",
